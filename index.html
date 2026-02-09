@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Media Services</title>
+<title>Boosting Services</title>
 
 <style>
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
 body{
   margin:0;
-  font-family:Arial, sans-serif;
   min-height:100vh;
   background:
-    linear-gradient(135deg, rgba(0,0,0,.75), rgba(0,0,0,.6)),
-    url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+    linear-gradient(135deg, rgba(0,0,0,.75), rgba(0,0,0,.85)),
+    url("https://images.unsplash.com/photo-1517433456452-f9633a875f6f");
   background-size:cover;
   background-position:center;
   color:#fff;
@@ -21,231 +22,239 @@ body{
 
 h1{
   text-align:center;
-  margin-bottom:25px;
   font-weight:900;
   letter-spacing:1px;
+  margin-bottom:30px;
 }
 
-/* HEADER BOX */
-.service-box{
-  padding:18px 20px;
+/* CATEGORY BOX */
+.category{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
   border-radius:22px;
-  margin-bottom:15px;
-  font-size:18px;
-  font-weight:bold;
+  padding:18px 20px;
+  margin-bottom:14px;
   cursor:pointer;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-/* DETAILS */
-.details{
-  display:none;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(14px);
-  border-radius:22px;
-  padding:20px;
-  margin-bottom:25px;
-}
-
-.option{
-  background:rgba(255,255,255,0.28);
-  border-radius:14px;
-  padding:14px;
-  margin-bottom:12px;
-  color:#000;
-}
-
-select,input{
-  width:100%;
-  padding:12px;
-  margin-top:8px;
-  border-radius:12px;
-  border:none;
-  font-size:15px;
-}
-
-.total-box{
-  background:#fff;
-  color:#000;
-  border-radius:18px;
-  padding:16px;
   font-size:18px;
   font-weight:bold;
-  text-align:center;
-  margin-top:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-button{
-  width:100%;
-  padding:14px;
-  border:none;
+/* SERVICES */
+.services{
+  display:none;
+  margin-bottom:25px;
+  animation:slide .35s ease;
+}
+
+@keyframes slide{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.service{
+  background:rgba(255,255,255,.22);
+  color:#000;
   border-radius:18px;
-  margin-top:10px;
-  font-size:16px;
+  padding:14px 16px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.service:hover{
+  transform:scale(1.02);
+  background:rgba(255,255,255,.32);
+}
+
+.price{
+  display:none;
+  margin-top:8px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.show{display:block}
+
+/* ORDER */
+.order{
+  margin-top:40px;
+  background:#1877f2;
+  padding:16px;
+  border-radius:22px;
+  text-align:center;
+  font-size:18px;
   font-weight:bold;
   cursor:pointer;
 }
 
-.calc-btn{
-  background:#111;
-  color:#fff;
-}
-
-.order-btn{
-  background:#1877f2;
-  color:#fff;
-}
-
-.small{
+.footer{
+  text-align:center;
+  margin-top:18px;
   font-size:14px;
   opacity:.85;
-  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<h1>ðŸš€ SOCIAL MEDIA SERVICES</h1>
+<h1>🚀 BOOSTING SERVICES</h1>
 
 <!-- FACEBOOK -->
-<div class="service-box" onclick="toggle('fb')">
-  ðŸ“˜ FACEBOOK SERVICES <span>â–¼</span>
+<div class="category" onclick="toggle('fb')">
+  📘 Facebook Boosting Services <span>▼</span>
+</div>
+<div class="services" id="fb">
+
+  <div class="service" onclick="price(this)">
+    PAGE FOLLOW
+    <div class="price">₱37 per 1,000 Page Followers</div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    PROFILE FOLLOWERS
+    <div class="price">₱40 per 1,000 Profile Followers</div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    POST REACTION
+    <div class="price">
+      🤣 ₱27 | 😲 ₱27 | ♥️ ₱30<br>
+      😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>
+      per 1,000 reactions
+    </div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    POST SHARE
+    <div class="price">
+      Random ₱55 / 1k<br>
+      🇵🇭 PH Share ₱67 / 1k<br>
+      Video/Reels ₱87 / 1k
+    </div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    REELS VIEWS
+    <div class="price">₱34 per 1,000 Views</div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    VIDEO VIEWS
+    <div class="price">₱40 per 1,000 Views</div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    ON GOING LIVE STREAM VIEWS
+    <div class="price">
+      35 mins ₱150 / 1k<br>
+      20 mins ₱120 / 1k
+    </div>
+  </div>
+
+  <div class="service" onclick="price(this)">
+    GHOST COMMENTS
+    <div class="price">Coming Soon</div>
+  </div>
 </div>
 
-<div class="details" id="fb">
-  <div class="option">
-    <b>Select Service</b>
-    <select id="fbService">
-      <option value="0">-- Select --</option>
-      <option value="34">Page Followers â€“ â‚±34 / 1000</option>
-      <option value="38">Profile Followers â€“ â‚±38 / 1000</option>
-      <option value="20">Share Post â€“ â‚±20 / 1000</option>
-      <option value="30">Reaction Any â€“ â‚±30 / 1000</option>
-      <option value="28">Reel Views â€“ â‚±28 / 1000</option>
-      <option value="30">Video Views â€“ â‚±30 / 1000</option>
-      <option value="40">Ghost Comments â€“ â‚±40 / 1000</option>
-      <option value="350">ðŸ‡µðŸ‡­ PH Reaction â€“ â‚±350 / 1000</option>
-      <option value="60">ðŸ‡µðŸ‡­ PH Share â€“ â‚±60 / 1000</option>
-      <option value="50" data-unit="10">ðŸ‡µðŸ‡­ PH Custom Comment â€“ â‚±50 / 10</option>
-    </select>
+<!-- FACEBOOK PROMO -->
+<div class="category" onclick="toggle('promo')">
+  📘 Facebook Boosting Promo
+</div>
+<div class="services" id="promo">
+  <div class="service" onclick="price(this)">
+    PAGE FOLLOW – 10,000
+    <div class="price">₱280</div>
   </div>
-
-  <div class="option">
-    <b>Quantity</b>
-    <input type="number" id="fbQty" placeholder="Example: 1000 or 10">
+  <div class="service" onclick="price(this)">
+    PROFILE FOLLOWERS – 10,000
+    <div class="price">₱300</div>
   </div>
-
-  <button class="calc-btn" onclick="calculate('fb')">CALCULATE</button>
-  <div class="total-box" id="fbTotal">TOTAL: â‚±0</div>
-
-  <button class="order-btn" onclick="orderNow()">ORDER VIA FACEBOOK</button>
 </div>
 
 <!-- TIKTOK -->
-<div class="service-box" onclick="toggle('tt')">
-  ðŸŽµ TIKTOK SERVICES <span>â–¼</span>
+<div class="category" onclick="toggle('tt')">
+  🎵 TikTok Boosting Services
 </div>
-
-<div class="details" id="tt">
-  <div class="option">
-    <b>Select Service</b>
-    <select id="ttService">
-      <option value="0">-- Select --</option>
-      <option value="170">Followers â€“ â‚±170 / 1000</option>
-      <option value="9">Views â€“ â‚±9 / 1000</option>
-      <option value="30">Likes â€“ â‚±30 / 1000</option>
-      <option value="35">Shares â€“ â‚±35 / 1000</option>
-    </select>
+<div class="services" id="tt">
+  <div class="service" onclick="price(this)">
+    TikTok Followers
+    <div class="price">₱167.78 per 1,000 Followers</div>
   </div>
-
-  <div class="option">
-    <b>Quantity</b>
-    <input type="number" id="ttQty" placeholder="Example: 5000">
+  <div class="service" onclick="price(this)">
+    TikTok Likes
+    <div class="price">₱34 per 1,000 Likes</div>
   </div>
-
-  <button class="calc-btn" onclick="calculate('tt')">CALCULATE</button>
-  <div class="total-box" id="ttTotal">TOTAL: â‚±0</div>
-
-  <button class="order-btn" onclick="orderNow()">ORDER VIA FACEBOOK</button>
+  <div class="service" onclick="price(this)">
+    TikTok Views
+    <div class="price">₱16 per 1,000 Views</div>
+  </div>
 </div>
 
 <!-- INSTAGRAM -->
-<div class="service-box" onclick="toggle('ig')">
-  ðŸ“¸ INSTAGRAM SERVICES <span>â–¼</span>
+<div class="category" onclick="toggle('ig')">
+  📸 Instagram Boosting Services
 </div>
-
-<div class="details" id="ig">
-  <div class="option">
-    <b>Select Service</b>
-    <select id="igService">
-      <option value="0">-- Select --</option>
-      <option value="150">Followers â€“ â‚±150 / 1000</option>
-      <option value="30">Likes â€“ â‚±30 / 1000</option>
-      <option value="29">Reel Views â€“ â‚±29 / 1000</option>
-    </select>
+<div class="services" id="ig">
+  <div class="service" onclick="price(this)">
+    Instagram Followers
+    <div class="price">₱97 per 1,000 Followers</div>
   </div>
-
-  <div class="option">
-    <b>Quantity</b>
-    <input type="number" id="igQty">
+  <div class="service" onclick="price(this)">
+    Instagram Reel Views
+    <div class="price">₱39 per 1,000 Views</div>
   </div>
-
-  <button class="calc-btn" onclick="calculate('ig')">CALCULATE</button>
-  <div class="total-box" id="igTotal">TOTAL: â‚±0</div>
-
-  <button class="order-btn" onclick="orderNow()">ORDER VIA FACEBOOK</button>
-</div>
-
-<!-- THREADS -->
-<div class="service-box">
-  ðŸ§µ THREADS SERVICES
-</div>
-<div class="details" style="display:block">
-  <div class="total-box">COMING SOON</div>
-</div>
-
-<!-- TOOLS -->
-<div class="service-box">
-  ðŸ›  TOOLS & RENT
-</div>
-<div class="details" style="display:block">
-  <div class="option small">
-    FB MAKER RENT<br>
-    3D â‚±80 | 5D â‚±100 | 10D â‚±150 | 15D â‚±180<br>
-    1 MONTH â‚±230 | LIFETIME â‚±300
+  <div class="service" onclick="price(this)">
+    Instagram Likes
+    <div class="price">₱38 per 1,000 Likes</div>
   </div>
-  <div class="option small">
-    MASS REPORT TOOL â€“ LIFETIME â‚±150
+</div>
+
+<!-- YOUTUBE -->
+<div class="category" onclick="toggle('yt')">
+  ▶️ YouTube Boosting Services
+</div>
+<div class="services" id="yt">
+  <div class="service" onclick="price(this)">
+    YouTube Subscribers
+    <div class="price">₱1,600 per 1,000 Real Subscribers</div>
   </div>
+</div>
+
+<!-- TELEGRAM -->
+<div class="category" onclick="toggle('tg')">
+  ✈️ Telegram Boosting Services
+</div>
+<div class="services" id="tg">
+  <div class="service" onclick="price(this)">
+    Telegram Members
+    <div class="price">₱70 per 1,000 Members</div>
+  </div>
+</div>
+
+<!-- ORDER -->
+<div class="order" onclick="orderNow()">
+  ORDER NOW VIA FACEBOOK
+</div>
+
+<div class="footer">
+  Contact on FB : <b>Kristine Mae</b>
 </div>
 
 <script>
 function toggle(id){
-  const el = document.getElementById(id);
-  el.style.display = el.style.display === "block" ? "none" : "block";
+  const el=document.getElementById(id);
+  el.style.display=el.style.display==="block"?"none":"block";
 }
 
-function calculate(type){
-  const service = document.getElementById(type+"Service");
-  const qty = Number(document.getElementById(type+"Qty").value);
-  const price = Number(service.value);
-
-  if(price === 0 || qty <= 0){
-    alert("Select service and enter quantity");
-    return;
-  }
-
-  let unit = service.options[service.selectedIndex].dataset.unit || 1000;
-  const total = (qty / unit) * price;
-
-  document.getElementById(type+"Total").innerText =
-    "TOTAL: â‚±" + total.toLocaleString();
+function price(el){
+  const p=el.querySelector(".price");
+  p.classList.toggle("show");
 }
 
 function orderNow(){

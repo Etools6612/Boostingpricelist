@@ -20,7 +20,7 @@ body{
   padding:20px;
 }
 
-h1{text-align:center;font-weight:900;margin-bottom:10px}
+h1{text-align:center;font-weight:900;margin-bottom:5px}
 .hint{text-align:center;font-size:14px;opacity:.8;margin-bottom:25px}
 
 /* CATEGORY */
@@ -38,7 +38,7 @@ h1{text-align:center;font-weight:900;margin-bottom:10px}
 }
 
 /* SERVICES */
-.services{display:none;margin-bottom:20px}
+.services{display:none;margin-bottom:25px}
 .service{
   background:rgba(255,255,255,.22);
   color:#000;
@@ -49,7 +49,7 @@ h1{text-align:center;font-weight:900;margin-bottom:10px}
   cursor:pointer;
 }
 
-/* ===== MODAL ===== */
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -68,7 +68,7 @@ h1{text-align:center;font-weight:900;margin-bottom:10px}
   border-radius:22px;
   padding:22px;
   text-align:center;
-  animation:pop .35s ease;
+  animation:pop .3s ease;
 }
 
 @keyframes pop{
@@ -77,9 +77,9 @@ h1{text-align:center;font-weight:900;margin-bottom:10px}
 }
 
 .modal h2{margin:0 0 10px}
-.modal p{font-size:15px;opacity:.9}
+.modal p{font-size:15px;line-height:1.5}
 
-/* ORDER BTN */
+/* ORDER */
 .order-btn{
   margin-top:20px;
   background:#22c55e;
@@ -101,23 +101,54 @@ h1{text-align:center;font-weight:900;margin-bottom:10px}
 <body>
 
 <h1>🚀 BOOSTING SERVICES</h1>
-<div class="hint">Click service to check price</div>
+<div class="hint">Click the service to check price</div>
 
-<div class="category" onclick="toggle('fb')">
-  📘 Facebook Boosting Services <span>▼</span>
+<!-- FACEBOOK -->
+<div class="category" onclick="toggle('fb')">📘 Facebook Boosting Services <span>▼</span></div>
+<div class="services" id="fb">
+  <div class="service" onclick="openModal('PAGE FOLLOW','₱37 per 1,000 Page Followers')">PAGE FOLLOW</div>
+  <div class="service" onclick="openModal('PROFILE FOLLOWERS','₱40 per 1,000 Profile Followers')">PROFILE FOLLOWERS</div>
+  <div class="service" onclick="openModal('POST REACTION','🤣 ₱27 | 😲 ₱27 | ❤️ ₱30<br>😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>per 1,000 reactions')">POST REACTION</div>
+  <div class="service" onclick="openModal('POST SHARE','Random ₱55 / 1k<br>🇵🇭 PH ₱67 / 1k<br>Video/Reels ₱87 / 1k')">POST SHARE</div>
+  <div class="service" onclick="openModal('REELS VIEWS','₱34 per 1,000 Views')">REELS VIEWS</div>
+  <div class="service" onclick="openModal('VIDEO VIEWS','₱40 per 1,000 Views')">VIDEO VIEWS</div>
+  <div class="service" onclick="openModal('LIVE STREAM VIEWS','35 mins ₱150 / 1k<br>20 mins ₱120 / 1k')">ON GOING LIVE STREAM VIEWS</div>
+  <div class="service" onclick="openModal('GHOST COMMENTS','Coming Soon')">GHOST COMMENTS</div>
 </div>
 
-<div class="services" id="fb">
-  <div class="service" onclick="openModal('PAGE FOLLOW','₱37 per 1,000 Page Followers')">
-    PAGE FOLLOW
-  </div>
-  <div class="service" onclick="openModal('PROFILE FOLLOWERS','₱40 per 1,000 Profile Followers')">
-    PROFILE FOLLOWERS
-  </div>
-  <div class="service" onclick="openModal('POST REACTION',
-  '🤣 ₱27 | 😲 ₱27 | ❤️ ₱30<br>😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>per 1,000 reactions')">
-    POST REACTION
-  </div>
+<!-- FACEBOOK PROMO -->
+<div class="category" onclick="toggle('promo')">📘 Facebook Boosting Promo <span>▼</span></div>
+<div class="services" id="promo">
+  <div class="service" onclick="openModal('PAGE FOLLOW PROMO','10,000 Followers – ₱280')">PAGE FOLLOW – 10,000</div>
+  <div class="service" onclick="openModal('PROFILE FOLLOW PROMO','10,000 Followers – ₱300')">PROFILE FOLLOWERS – 10,000</div>
+</div>
+
+<!-- TIKTOK -->
+<div class="category" onclick="toggle('tt')">🎵 TikTok Boosting Services <span>▼</span></div>
+<div class="services" id="tt">
+  <div class="service" onclick="openModal('TIKTOK FOLLOWERS','₱167.78 per 1,000 Followers')">TikTok Followers</div>
+  <div class="service" onclick="openModal('TIKTOK LIKES','₱34 per 1,000 Likes')">TikTok Likes</div>
+  <div class="service" onclick="openModal('TIKTOK VIEWS','₱16 per 1,000 Views')">TikTok Views</div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="category" onclick="toggle('ig')">📸 Instagram Boosting Services <span>▼</span></div>
+<div class="services" id="ig">
+  <div class="service" onclick="openModal('INSTAGRAM FOLLOWERS','₱97 per 1,000 Followers')">Instagram Followers</div>
+  <div class="service" onclick="openModal('INSTAGRAM REEL VIEWS','₱39 per 1,000 Views')">Instagram Reel Views</div>
+  <div class="service" onclick="openModal('INSTAGRAM LIKES','₱38 per 1,000 Likes')">Instagram Likes</div>
+</div>
+
+<!-- YOUTUBE -->
+<div class="category" onclick="toggle('yt')">▶️ YouTube Boosting Services <span>▼</span></div>
+<div class="services" id="yt">
+  <div class="service" onclick="openModal('YOUTUBE SUBSCRIBERS','₱1,600 per 1,000 Real Subscribers')">YouTube Subscribers</div>
+</div>
+
+<!-- TELEGRAM -->
+<div class="category" onclick="toggle('tg')">✈️ Telegram Boosting Services <span>▼</span></div>
+<div class="services" id="tg">
+  <div class="service" onclick="openModal('TELEGRAM MEMBERS','₱70 per 1,000 Members')">Telegram Members</div>
 </div>
 
 <!-- MODAL -->
@@ -125,11 +156,7 @@ h1{text-align:center;font-weight:900;margin-bottom:10px}
   <div class="modal-box">
     <h2 id="modalTitle"></h2>
     <p id="modalPrice"></p>
-
-    <div class="order-btn" onclick="orderNow()">
-      ORDER NOW
-    </div>
-
+    <div class="order-btn" onclick="orderNow()">ORDER NOW</div>
     <div class="close" onclick="closeModal()">Close</div>
   </div>
 </div>
@@ -141,22 +168,19 @@ function toggle(id){
 }
 
 function openModal(title,price){
-  document.getElementById("modalTitle").innerHTML=title;
-  document.getElementById("modalPrice").innerHTML=price;
-  document.getElementById("modal").style.display="flex";
+  modalTitle.innerHTML=title;
+  modalPrice.innerHTML=price;
+  modal.style.display="flex";
 }
 
 function closeModal(e){
   if(!e || e.target.id==="modal"){
-    document.getElementById("modal").style.display="none";
+    modal.style.display="none";
   }
 }
 
 function orderNow(){
-  window.open(
-    "https://www.facebook.com/profile.php?id=61587276074494",
-    "_blank"
-  );
+  window.open("https://www.facebook.com/profile.php?id=61587276074494","_blank");
 }
 </script>
 

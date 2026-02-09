@@ -20,28 +20,8 @@ body{
   padding:20px;
 }
 
-/* TITLE */
-h1{
-  text-align:center;
-  font-weight:900;
-  letter-spacing:1px;
-  margin-bottom:8px;
-}
-
-/* HINT */
-.hint{
-  text-align:center;
-  font-size:14px;
-  opacity:.85;
-  margin-bottom:25px;
-  animation:pulse 1.8s infinite;
-}
-
-@keyframes pulse{
-  0%{opacity:.4}
-  50%{opacity:1}
-  100%{opacity:.4}
-}
+h1{text-align:center;font-weight:900;margin-bottom:10px}
+.hint{text-align:center;font-size:14px;opacity:.8;margin-bottom:25px}
 
 /* CATEGORY */
 .category{
@@ -53,89 +33,67 @@ h1{
   cursor:pointer;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   font-size:18px;
   font-weight:bold;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  transition:.3s;
 }
 
-.category:hover{
-  transform:scale(1.02);
-}
-
-/* SERVICES LIST */
-.services{
-  display:none;
-  margin-bottom:25px;
-  animation:drop .4s ease;
-}
-
-@keyframes drop{
-  from{opacity:0;transform:translateY(-10px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* SERVICE BUTTON */
+/* SERVICES */
+.services{display:none;margin-bottom:20px}
 .service{
   background:rgba(255,255,255,.22);
   color:#000;
   border-radius:18px;
-  padding:15px 16px;
+  padding:15px;
   margin-bottom:10px;
-  cursor:pointer;
-  transition:.25s;
   font-weight:bold;
+  cursor:pointer;
 }
 
-.service:hover{
-  transform:scale(1.03);
-  background:rgba(255,255,255,.35);
-}
-
-/* PRICE BOX */
-.price-box{
-  display:none;
-  margin-top:10px;
-  padding:14px;
-  border-radius:16px;
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  inset:0;
   background:rgba(0,0,0,.65);
-  color:#fff;
-  font-size:14px;
-  animation:slideUp .35s ease;
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
 }
 
-@keyframes slideUp{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.show{display:block}
-
-/* ORDER */
-.order{
-  margin-top:40px;
-  background:#1877f2;
-  padding:16px;
+.modal-box{
+  width:90%;
+  max-width:380px;
+  background:#0f172a;
   border-radius:22px;
+  padding:22px;
   text-align:center;
-  font-size:18px;
+  animation:pop .35s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.modal h2{margin:0 0 10px}
+.modal p{font-size:15px;opacity:.9}
+
+/* ORDER BTN */
+.order-btn{
+  margin-top:20px;
+  background:#22c55e;
+  padding:14px;
+  border-radius:18px;
   font-weight:bold;
   cursor:pointer;
-  animation:glow 2s infinite;
 }
 
-@keyframes glow{
-  0%{box-shadow:0 0 8px #1877f2}
-  50%{box-shadow:0 0 18px #1877f2}
-  100%{box-shadow:0 0 8px #1877f2}
-}
-
-.footer{
-  text-align:center;
-  margin-top:18px;
+.close{
+  margin-top:12px;
   font-size:14px;
-  opacity:.85;
+  opacity:.6;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -143,74 +101,37 @@ h1{
 <body>
 
 <h1>🚀 BOOSTING SERVICES</h1>
-<div class="hint">👇 Click the services to check prices</div>
+<div class="hint">Click service to check price</div>
 
-<!-- FACEBOOK -->
 <div class="category" onclick="toggle('fb')">
   📘 Facebook Boosting Services <span>▼</span>
 </div>
 
 <div class="services" id="fb">
-
-  <div class="service" onclick="price(this)">
+  <div class="service" onclick="openModal('PAGE FOLLOW','₱37 per 1,000 Page Followers')">
     PAGE FOLLOW
-    <div class="price-box">₱37 per 1,000 Page Followers</div>
   </div>
-
-  <div class="service" onclick="price(this)">
+  <div class="service" onclick="openModal('PROFILE FOLLOWERS','₱40 per 1,000 Profile Followers')">
     PROFILE FOLLOWERS
-    <div class="price-box">₱40 per 1,000 Profile Followers</div>
   </div>
-
-  <div class="service" onclick="price(this)">
+  <div class="service" onclick="openModal('POST REACTION',
+  '🤣 ₱27 | 😲 ₱27 | ❤️ ₱30<br>😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>per 1,000 reactions')">
     POST REACTION
-    <div class="price-box">
-      🤣 ₱27 | 😲 ₱27 | ❤️ ₱30<br>
-      😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>
-      per 1,000 reactions
-    </div>
-  </div>
-
-  <div class="service" onclick="price(this)">
-    POST SHARE
-    <div class="price-box">
-      Random ₱55 / 1k<br>
-      🇵🇭 PH Share ₱67 / 1k<br>
-      Video/Reels ₱87 / 1k
-    </div>
-  </div>
-
-  <div class="service" onclick="price(this)">
-    REELS VIEWS
-    <div class="price-box">₱34 per 1,000 Views</div>
-  </div>
-
-  <div class="service" onclick="price(this)">
-    VIDEO VIEWS
-    <div class="price-box">₱40 per 1,000 Views</div>
-  </div>
-
-  <div class="service" onclick="price(this)">
-    ON GOING LIVE STREAM VIEWS
-    <div class="price-box">
-      35 mins ₱150 / 1k<br>
-      20 mins ₱120 / 1k
-    </div>
-  </div>
-
-  <div class="service" onclick="price(this)">
-    GHOST COMMENTS
-    <div class="price-box">Coming Soon</div>
   </div>
 </div>
 
-<!-- ORDER -->
-<div class="order" onclick="orderNow()">
-  ORDER NOW VIA FACEBOOK
-</div>
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <h2 id="modalTitle"></h2>
+    <p id="modalPrice"></p>
 
-<div class="footer">
-  Contact on FB : <b>Kristine Mae</b>
+    <div class="order-btn" onclick="orderNow()">
+      ORDER NOW
+    </div>
+
+    <div class="close" onclick="closeModal()">Close</div>
+  </div>
 </div>
 
 <script>
@@ -219,9 +140,16 @@ function toggle(id){
   el.style.display=el.style.display==="block"?"none":"block";
 }
 
-function price(el){
-  const box=el.querySelector(".price-box");
-  box.classList.toggle("show");
+function openModal(title,price){
+  document.getElementById("modalTitle").innerHTML=title;
+  document.getElementById("modalPrice").innerHTML=price;
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(e){
+  if(!e || e.target.id==="modal"){
+    document.getElementById("modal").style.display="none";
+  }
 }
 
 function orderNow(){

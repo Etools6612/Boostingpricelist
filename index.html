@@ -20,14 +20,30 @@ body{
   padding:20px;
 }
 
+/* TITLE */
 h1{
   text-align:center;
   font-weight:900;
   letter-spacing:1px;
-  margin-bottom:30px;
+  margin-bottom:8px;
 }
 
-/* CATEGORY BOX */
+/* HINT */
+.hint{
+  text-align:center;
+  font-size:14px;
+  opacity:.85;
+  margin-bottom:25px;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%{opacity:.4}
+  50%{opacity:1}
+  100%{opacity:.4}
+}
+
+/* CATEGORY */
 .category{
   background:rgba(255,255,255,.12);
   backdrop-filter:blur(14px);
@@ -41,40 +57,57 @@ h1{
   font-size:18px;
   font-weight:bold;
   box-shadow:0 10px 30px rgba(0,0,0,.35);
+  transition:.3s;
 }
 
-/* SERVICES */
+.category:hover{
+  transform:scale(1.02);
+}
+
+/* SERVICES LIST */
 .services{
   display:none;
   margin-bottom:25px;
-  animation:slide .35s ease;
+  animation:drop .4s ease;
 }
 
-@keyframes slide{
-  from{opacity:0;transform:translateY(-8px)}
+@keyframes drop{
+  from{opacity:0;transform:translateY(-10px)}
   to{opacity:1;transform:translateY(0)}
 }
 
+/* SERVICE BUTTON */
 .service{
   background:rgba(255,255,255,.22);
   color:#000;
   border-radius:18px;
-  padding:14px 16px;
+  padding:15px 16px;
   margin-bottom:10px;
   cursor:pointer;
   transition:.25s;
+  font-weight:bold;
 }
 
 .service:hover{
-  transform:scale(1.02);
-  background:rgba(255,255,255,.32);
+  transform:scale(1.03);
+  background:rgba(255,255,255,.35);
 }
 
-.price{
+/* PRICE BOX */
+.price-box{
   display:none;
-  margin-top:8px;
+  margin-top:10px;
+  padding:14px;
+  border-radius:16px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
   font-size:14px;
-  font-weight:bold;
+  animation:slideUp .35s ease;
+}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .show{display:block}
@@ -89,6 +122,13 @@ h1{
   font-size:18px;
   font-weight:bold;
   cursor:pointer;
+  animation:glow 2s infinite;
+}
+
+@keyframes glow{
+  0%{box-shadow:0 0 8px #1877f2}
+  50%{box-shadow:0 0 18px #1877f2}
+  100%{box-shadow:0 0 8px #1877f2}
 }
 
 .footer{
@@ -103,27 +143,29 @@ h1{
 <body>
 
 <h1>🚀 BOOSTING SERVICES</h1>
+<div class="hint">👇 Click the services to check prices</div>
 
 <!-- FACEBOOK -->
 <div class="category" onclick="toggle('fb')">
   📘 Facebook Boosting Services <span>▼</span>
 </div>
+
 <div class="services" id="fb">
 
   <div class="service" onclick="price(this)">
     PAGE FOLLOW
-    <div class="price">₱37 per 1,000 Page Followers</div>
+    <div class="price-box">₱37 per 1,000 Page Followers</div>
   </div>
 
   <div class="service" onclick="price(this)">
     PROFILE FOLLOWERS
-    <div class="price">₱40 per 1,000 Profile Followers</div>
+    <div class="price-box">₱40 per 1,000 Profile Followers</div>
   </div>
 
   <div class="service" onclick="price(this)">
     POST REACTION
-    <div class="price">
-      🤣 ₱27 | 😲 ₱27 | ♥️ ₱30<br>
+    <div class="price-box">
+      🤣 ₱27 | 😲 ₱27 | ❤️ ₱30<br>
       😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>
       per 1,000 reactions
     </div>
@@ -131,7 +173,7 @@ h1{
 
   <div class="service" onclick="price(this)">
     POST SHARE
-    <div class="price">
+    <div class="price-box">
       Random ₱55 / 1k<br>
       🇵🇭 PH Share ₱67 / 1k<br>
       Video/Reels ₱87 / 1k
@@ -140,17 +182,17 @@ h1{
 
   <div class="service" onclick="price(this)">
     REELS VIEWS
-    <div class="price">₱34 per 1,000 Views</div>
+    <div class="price-box">₱34 per 1,000 Views</div>
   </div>
 
   <div class="service" onclick="price(this)">
     VIDEO VIEWS
-    <div class="price">₱40 per 1,000 Views</div>
+    <div class="price-box">₱40 per 1,000 Views</div>
   </div>
 
   <div class="service" onclick="price(this)">
     ON GOING LIVE STREAM VIEWS
-    <div class="price">
+    <div class="price-box">
       35 mins ₱150 / 1k<br>
       20 mins ₱120 / 1k
     </div>
@@ -158,82 +200,7 @@ h1{
 
   <div class="service" onclick="price(this)">
     GHOST COMMENTS
-    <div class="price">Coming Soon</div>
-  </div>
-</div>
-
-<!-- FACEBOOK PROMO -->
-<div class="category" onclick="toggle('promo')">
-  📘 Facebook Boosting Promo
-</div>
-<div class="services" id="promo">
-  <div class="service" onclick="price(this)">
-    PAGE FOLLOW – 10,000
-    <div class="price">₱280</div>
-  </div>
-  <div class="service" onclick="price(this)">
-    PROFILE FOLLOWERS – 10,000
-    <div class="price">₱300</div>
-  </div>
-</div>
-
-<!-- TIKTOK -->
-<div class="category" onclick="toggle('tt')">
-  🎵 TikTok Boosting Services
-</div>
-<div class="services" id="tt">
-  <div class="service" onclick="price(this)">
-    TikTok Followers
-    <div class="price">₱167.78 per 1,000 Followers</div>
-  </div>
-  <div class="service" onclick="price(this)">
-    TikTok Likes
-    <div class="price">₱34 per 1,000 Likes</div>
-  </div>
-  <div class="service" onclick="price(this)">
-    TikTok Views
-    <div class="price">₱16 per 1,000 Views</div>
-  </div>
-</div>
-
-<!-- INSTAGRAM -->
-<div class="category" onclick="toggle('ig')">
-  📸 Instagram Boosting Services
-</div>
-<div class="services" id="ig">
-  <div class="service" onclick="price(this)">
-    Instagram Followers
-    <div class="price">₱97 per 1,000 Followers</div>
-  </div>
-  <div class="service" onclick="price(this)">
-    Instagram Reel Views
-    <div class="price">₱39 per 1,000 Views</div>
-  </div>
-  <div class="service" onclick="price(this)">
-    Instagram Likes
-    <div class="price">₱38 per 1,000 Likes</div>
-  </div>
-</div>
-
-<!-- YOUTUBE -->
-<div class="category" onclick="toggle('yt')">
-  ▶️ YouTube Boosting Services
-</div>
-<div class="services" id="yt">
-  <div class="service" onclick="price(this)">
-    YouTube Subscribers
-    <div class="price">₱1,600 per 1,000 Real Subscribers</div>
-  </div>
-</div>
-
-<!-- TELEGRAM -->
-<div class="category" onclick="toggle('tg')">
-  ✈️ Telegram Boosting Services
-</div>
-<div class="services" id="tg">
-  <div class="service" onclick="price(this)">
-    Telegram Members
-    <div class="price">₱70 per 1,000 Members</div>
+    <div class="price-box">Coming Soon</div>
   </div>
 </div>
 
@@ -253,8 +220,8 @@ function toggle(id){
 }
 
 function price(el){
-  const p=el.querySelector(".price");
-  p.classList.toggle("show");
+  const box=el.querySelector(".price-box");
+  box.classList.toggle("show");
 }
 
 function orderNow(){

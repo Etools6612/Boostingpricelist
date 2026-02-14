@@ -3,277 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boosting Services</title>
-
+<title>Temp Mail Pro</title>
 <style>
 *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-
-body{
-  margin:0;
-  min-height:100vh;
-  background:linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed);
-  color:#fff;
-  padding:20px;
-}
-
-h1{text-align:center;font-weight:900;margin-bottom:5px}
-.hint{text-align:center;font-size:14px;opacity:.85;margin-bottom:25px}
-
-/* CATEGORY */
-.category{
-  background:rgba(255,255,255,.15);
-  backdrop-filter:blur(14px);
-  border-radius:22px;
-  padding:18px 20px;
-  margin-bottom:14px;
-  cursor:pointer;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:18px;
-  font-weight:bold;
-}
-
-/* SERVICES */
-.services{display:none;margin-bottom:25px}
-
-.service{
-  background:rgba(255,255,255,.25);
-  color:#000;
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:10px;
-  font-weight:bold;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  transition:.25s;
-}
-
-.service img{width:26px;height:26px}
-
-.service:hover{transform:scale(1.02)}
-
-.service.active{
-  border:2px solid #a78bfa;
-  box-shadow:0 0 15px #a78bfa;
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(8px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
-}
-
-.modal-box{
-  width:90%;
-  max-width:380px;
-  background:#0b1220;
-  border-radius:22px;
-  padding:20px;
-  animation:pop .3s ease;
-}
-
-@keyframes pop{
-  from{transform:scale(.9);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
-/* RECEIPT */
-.receipt{
-  background:#020617;
-  border-radius:18px;
-  padding:18px;
-  border:1px dashed #6366f1;
-  text-align:center;
-}
-
-.receipt img{width:40px;margin-bottom:8px}
-
-.receipt h2{margin:0 0 6px}
-.receipt p{font-size:14px;line-height:1.5;opacity:.9}
-
-/* ORDER */
-.order-btn{
-  margin-top:18px;
-  background:#22c55e;
-  padding:14px;
-  border-radius:18px;
-  font-weight:bold;
-  cursor:pointer;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  animation:arrow 1.3s infinite;
-}
-
-@keyframes arrow{
-  0%{transform:translateX(0)}
-  50%{transform:translateX(6px)}
-  100%{transform:translateX(0)}
-}
-
-.cancel{
-  margin-top:12px;
-  text-align:center;
-  font-size:14px;
-  opacity:.7;
-  cursor:pointer;
-}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed);color:white;padding:20px;}
+h1{text-align:center;font-weight:900;}
+.mailbox{max-width:600px;margin:auto;background:rgba(255,255,255,.15);backdrop-filter:blur(14px);padding:20px;border-radius:22px;}
+select,input,button{width:100%;padding:12px;border:none;border-radius:14px;margin-top:10px;font-size:15px;}
+select{background:white;color:black;}
+.email-box{display:flex;gap:8px;margin-top:12px;}
+.email-box input{flex:1;background:#fff;color:#000;font-weight:bold;}
+.copy-btn{background:#22c55e;color:white;cursor:pointer;font-weight:bold;}
+.generate{background:#0ea5e9;color:white;cursor:pointer;font-weight:bold;margin-top:12px;}
+.tabs{display:flex;gap:10px;margin-top:20px;overflow-x:auto;}
+.tab{padding:10px 14px;background:rgba(255,255,255,.2);border-radius:14px;cursor:pointer;flex-shrink:0;}
+.tab.active{background:#22c55e;}
+.inbox-container{margin-top:20px;}
+.inbox{background:#0b1220;border-radius:16px;padding:14px;min-height:140px;position:relative;overflow:hidden;}
+.mail-item{background:#1e293b;padding:10px;border-radius:12px;margin-bottom:8px;font-size:14px;opacity:0;transform:translateY(-10px);transition:all .4s;}
+.admin-panel{margin-top:30px;background:rgba(255,255,255,.1);padding:14px;border-radius:14px;}
+.admin-panel h3{margin-top:0;}
 </style>
 </head>
-
 <body>
 
-<h1>🚀 BOOSTING SERVICES</h1>
-<div class="hint">Click a service to view price & order</div>
+<h1>📩 TEMP MAIL PRO</h1>
+<div class="hint">Generate disposable email • Copy • Multi Inbox • Live Incoming Mail</div>
 
-<!-- FACEBOOK -->
-<div class="category" onclick="toggle('fb')">📘 Facebook Boosting Services <span>▼</span></div>
-<div class="services" id="fb">
-  <div class="service" onclick="openModal(this,'Facebook Page Follow','₱37 per 1,000 Followers',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> PAGE FOLLOW
-  </div>
-  <div class="service" onclick="openModal(this,'Facebook Profile Followers','₱40 per 1,000 Followers',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> PROFILE FOLLOWERS
-  </div>
-  <div class="service" onclick="openModal(this,'Facebook Post Reaction','🤣 ₱27 | 😲 ₱27 | ❤️ ₱30<br>😭 ₱25 | 👍 ₱26 | 😘 ₱30<br>per 1,000',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> POST REACTION
-  </div>
-  <div class="service" onclick="openModal(this,'Post Share','Random ₱55 / PH ₱67 / Reels ₱87',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> POST SHARE
-  </div>
-  <div class="service" onclick="openModal(this,'Reels Views','₱34 per 1,000 Views',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> REELS VIEWS
-  </div>
-  <div class="service" onclick="openModal(this,'Video Views','₱40 per 1,000 Views',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> VIDEO VIEWS
-  </div>
-  <div class="service" onclick="openModal(this,'Live Stream Views','35min ₱150 / 20min ₱120',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> LIVE STREAM VIEWS
-  </div>
-  <div class="service" onclick="openModal(this,'Ghost Comments','Coming Soon',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> GHOST COMMENTS
-  </div>
-</div>
+<div class="mailbox">
+  <label>Select Email Provider:</label>
+  <select id="provider">
+    <option value="cybertemp.xyz">cybertemp.xyz</option>
+    <option value="harakirimail.com">harakirimail.com</option>
+    <option value="5smail.email">5smail.email</option>
+    <option value="outlook.com">Outlook</option>
+  </select>
 
-<!-- FACEBOOK PROMO -->
-<div class="category" onclick="toggle('promo')">📘 Facebook Boosting Promo <span>▼</span></div>
-<div class="services" id="promo">
-  <div class="service" onclick="openModal(this,'Page Follow Promo','10,000 Followers – ₱280',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> PAGE FOLLOW 10K
-  </div>
-  <div class="service" onclick="openModal(this,'Profile Follow Promo','10,000 Followers – ₱300',fb)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"> PROFILE FOLLOW 10K
-  </div>
-</div>
+  <button class="generate" onclick="generateEmail()">⚡ Generate Email</button>
 
-<!-- TIKTOK -->
-<div class="category" onclick="toggle('tt')">🎵 TikTok Boosting Services <span>▼</span></div>
-<div class="services" id="tt">
-  <div class="service" onclick="openModal(this,'TikTok Followers','₱167.78 per 1,000 Followers',tt)">
-    <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg"> FOLLOWERS
+  <div class="email-box">
+    <input id="emailField" readonly placeholder="Generated email appears here">
+    <button class="copy-btn" onclick="copyEmail()">COPY</button>
   </div>
-  <div class="service" onclick="openModal(this,'TikTok Likes','₱34 per 1,000 Likes',tt)">
-    <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg"> LIKES
-  </div>
-  <div class="service" onclick="openModal(this,'TikTok Views','₱16 per 1,000 Views',tt)">
-    <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg"> VIEWS
-  </div>
-</div>
 
-<!-- INSTAGRAM -->
-<div class="category" onclick="toggle('ig')">📸 Instagram Boosting Services <span>▼</span></div>
-<div class="services" id="ig">
-  <div class="service" onclick="openModal(this,'Instagram Followers','₱97 per 1,000 Followers',ig)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> FOLLOWERS
-  </div>
-  <div class="service" onclick="openModal(this,'Instagram Reel Views','₱39 per 1,000 Views',ig)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> REEL VIEWS
-  </div>
-  <div class="service" onclick="openModal(this,'Instagram Likes','₱38 per 1,000 Likes',ig)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> LIKES
-  </div>
-</div>
+  <!-- Tabs for multiple inboxes -->
+  <div class="tabs" id="tabs"></div>
 
-<!-- YOUTUBE -->
-<div class="category" onclick="toggle('yt')">▶️ YouTube Boosting Services <span>▼</span></div>
-<div class="services" id="yt">
-  <div class="service" onclick="openModal(this,'YouTube Subscribers','₱1,600 per 1,000 Real Subs',yt)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"> SUBSCRIBERS
+  <!-- Inbox Container -->
+  <div class="inbox-container">
+    <div class="inbox" id="inbox"><div class="empty">Inbox is empty...</div></div>
   </div>
-</div>
 
-<!-- TELEGRAM -->
-<div class="category" onclick="toggle('tg')">✈️ Telegram Boosting Services <span>▼</span></div>
-<div class="services" id="tg">
-  <div class="service" onclick="openModal(this,'Telegram Members','₱70 per 1,000 Members',tg)">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"> MEMBERS
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <div class="receipt">
-      <img id="logo">
-      <h2 id="title"></h2>
-      <p id="price"></p>
-    </div>
-
-    <div class="order-btn" onclick="orderNow()">ORDER NOW ➜</div>
-    <div class="cancel" onclick="closeModal()">Cancel</div>
+  <!-- Admin Panel -->
+  <div class="admin-panel" id="adminPanel">
+    <h3>Admin Panel</h3>
+    <div id="adminLogs">No logs yet...</div>
   </div>
 </div>
 
 <script>
-let selected=null;
-const fb="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png";
-const ig="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png";
-const tt="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg";
-const yt="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg";
-const tg="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg";
+let inboxes = {}; // store inbox by email
+let activeEmail = null;
 
-function toggle(id){
-  const el=document.getElementById(id);
-  el.style.display=el.style.display==="block"?"none":"block";
+function randomString(length){
+  const chars="abcdefghijklmnopqrstuvwxyz0123456789";
+  let result="";
+  for(let i=0;i<length;i++) result+=chars.charAt(Math.floor(Math.random()*chars.length));
+  return result;
 }
 
-function openModal(el,title,price,logo){
-  if(selected) selected.classList.remove("active");
-  selected=el;
-  el.classList.add("active");
+// Generate Email & Tab
+function generateEmail(){
+  const domain=document.getElementById("provider").value;
+  const email=randomString(10)+"@"+domain;
+  document.getElementById("emailField").value=email;
 
-  titleEl.innerHTML=title;
-  priceEl.innerHTML=price;
-  logoEl.src=logo;
-  modal.style.display="flex";
+  // create inbox for new email
+  if(!inboxes[email]) inboxes[email] = [];
+  activeEmail = email;
+  renderTabs();
+  fetchInbox(email);
+  logAdmin(`Email generated: ${email}`);
 }
 
-function closeModal(e){
-  if(!e || e.target.id==="modal"){
-    modal.style.display="none";
-    if(selected) selected.classList.remove("active");
+// Copy email
+function copyEmail(){
+  const email=document.getElementById("emailField");
+  if(!email.value) return alert("Generate email first.");
+  email.select();
+  document.execCommand("copy");
+  alert("Email copied!");
+}
+
+// Render Tabs
+function renderTabs(){
+  const tabsEl=document.getElementById("tabs");
+  tabsEl.innerHTML="";
+  Object.keys(inboxes).forEach(email=>{
+    const tab=document.createElement("div");
+    tab.className="tab"+(email===activeEmail?" active":"");
+    tab.innerText=email;
+    tab.onclick=()=>{activeEmail=email;renderTabs();renderInbox();}
+    tabsEl.appendChild(tab);
+  });
+}
+
+// Render Inbox
+function renderInbox(){
+  const inboxEl=document.getElementById("inbox");
+  inboxEl.innerHTML="";
+  const items = inboxes[activeEmail];
+  if(items.length===0){
+    inboxEl.innerHTML='<div class="empty">Inbox is empty...</div>';
+  } else {
+    items.forEach(msg=>{
+      const div=document.createElement("div");
+      div.className="mail-item";
+      div.innerHTML=msg;
+      inboxEl.appendChild(div);
+      // live animation
+      setTimeout(()=>{div.style.opacity=1; div.style.transform="translateY(0)";},50);
+    });
   }
 }
 
-function orderNow(){
-  window.open("https://www.facebook.com/profile.php?id=61587276074494","_blank");
+// Log to Admin Panel
+function logAdmin(msg){
+  const logs = document.getElementById("adminLogs");
+  const entry = document.createElement("div");
+  entry.innerText=`[${new Date().toLocaleTimeString()}] ${msg}`;
+  logs.prepend(entry);
 }
 
-const modal=document.getElementById("modal");
-const titleEl=document.getElementById("title");
-const priceEl=document.getElementById("price");
-const logoEl=document.getElementById("logo");
-</script>
+// Simulate API Inbox Fetch
+function fetchInbox(email){
+  // Example using real API: Replace this fetch call with your tempmail API
+  // fetch(`https://api.temp-mail.org/request/mail/id/${email}/format/json`)
+  //   .then(res=>res.json())
+  //   .then(data=>{ /* populate inbox */ });
 
+  // For demo: simulate new message every 3-5s
+  setInterval(()=>{
+    if(!inboxes[email]) return;
+    const newMail=`📩 New message from ${email}: Code ${Math.floor(Math.random()*900000+100000)}`;
+    inboxes[email].push(newMail);
+    if(activeEmail===email) renderInbox();
+    logAdmin(`New mail received for ${email}`);
+  }, 4000 + Math.random()*2000);
+}
+</script>
 </body>
 </html>

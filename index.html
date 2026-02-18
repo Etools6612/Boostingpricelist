@@ -8,14 +8,13 @@
 <style>
 body{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
     background: linear-gradient(135deg,#0f0f1b,#1a1a2e,#0f3460);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    background-size:400% 400%;
+    animation:gradientMove 15s ease infinite;
     color:white;
 }
 
-/* Animated background */
 @keyframes gradientMove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
@@ -23,7 +22,7 @@ body{
 }
 
 .container{
-    max-width:600px;
+    max-width:700px;
     margin:auto;
     padding:20px;
 }
@@ -38,19 +37,18 @@ body{
     -webkit-text-fill-color:transparent;
 }
 
-/* Category Box */
 .category{
     background: rgba(255,255,255,0.07);
-    padding:20px;
+    padding:18px;
     border-radius:15px;
     cursor:pointer;
+    margin-bottom:15px;
     box-shadow:0 0 15px rgba(168,85,247,0.4);
     transition:0.4s;
-    position:relative;
 }
 
 .category:hover{
-    transform:scale(1.03);
+    transform:scale(1.02);
     box-shadow:0 0 25px rgba(168,85,247,0.8);
 }
 
@@ -59,9 +57,9 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    font-size:18px;
 }
 
-/* Dropdown content */
 .services{
     max-height:0;
     overflow:hidden;
@@ -76,16 +74,16 @@ body{
 
 .services li{
     padding:8px 0;
-    border-bottom:1px solid rgba(255,255,255,0.05);
     font-size:14px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.arrow{
+    transition:0.3s;
 }
 
 .rotate{
     transform:rotate(180deg);
-    transition:0.4s;
-}
-.arrow{
-    transition:0.4s;
 }
 </style>
 </head>
@@ -95,13 +93,10 @@ body{
 <div class="container">
 <div class="title">SOCIAL MEDIA SERVICES</div>
 
-<div class="category" onclick="toggleService()">
-    <h2>
-        📘 Facebook Services
-        <span id="arrow" class="arrow">▼</span>
-    </h2>
-
-    <div class="services" id="serviceBox">
+<!-- FACEBOOK -->
+<div class="category" onclick="toggleService(this)">
+    <h2>📘 Facebook Services <span class="arrow">▼</span></h2>
+    <div class="services">
         <ul>
             <li>Page Followers ₱34 / 1,000</li>
             <li>Profile Followers ₱38 / 1,000</li>
@@ -113,12 +108,62 @@ body{
     </div>
 </div>
 
+<!-- INSTAGRAM -->
+<div class="category" onclick="toggleService(this)">
+    <h2>📸 Instagram Services <span class="arrow">▼</span></h2>
+    <div class="services">
+        <ul>
+            <li>Followers ₱70 / 1,000</li>
+            <li>Likes ₱38 / 1,000</li>
+            <li>Views ₱29 / 1,000</li>
+        </ul>
+    </div>
+</div>
+
+<!-- TIKTOK -->
+<div class="category" onclick="toggleService(this)">
+    <h2>🎵 TikTok Services <span class="arrow">▼</span></h2>
+    <div class="services">
+        <ul>
+            <li>Followers ₱180 / 1,000</li>
+            <li>Likes ₱30 / 1,000</li>
+            <li>Views ₱17 / 1,000</li>
+        </ul>
+    </div>
+</div>
+
+<!-- THREADS -->
+<div class="category" onclick="toggleService(this)">
+    <h2>🧵 Threads Services <span class="arrow">▼</span></h2>
+    <div class="services">
+        <ul>
+            <li>Followers ₱65 / 1,000</li>
+            <li>Likes ₱25 / 1,000</li>
+        </ul>
+    </div>
+</div>
+
 </div>
 
 <script>
-function toggleService(){
-    const box = document.getElementById("serviceBox");
-    const arrow = document.getElementById("arrow");
+function toggleService(selected){
+    const allServices = document.querySelectorAll(".services");
+    const allArrows = document.querySelectorAll(".arrow");
+
+    allServices.forEach(service=>{
+        if(service !== selected.querySelector(".services")){
+            service.style.maxHeight = null;
+        }
+    });
+
+    allArrows.forEach(arrow=>{
+        if(arrow !== selected.querySelector(".arrow")){
+            arrow.classList.remove("rotate");
+        }
+    });
+
+    const box = selected.querySelector(".services");
+    const arrow = selected.querySelector(".arrow");
 
     if(box.style.maxHeight){
         box.style.maxHeight = null;

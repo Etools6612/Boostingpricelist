@@ -6,17 +6,51 @@
 <title>Social Media Services</title>
 
 <style>
+/* ---------------- BODY & BACKGROUND ---------------- */
 body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
-    background: radial-gradient(circle at top left,#0f0f1b,#0a0a15,#000);
+    background: linear-gradient(-45deg, #0f0f1b, #1a1a2e, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
     color:white;
+    overflow-x:hidden;
+    position:relative;
 }
 
+/* Moving gradient */
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Floating particles */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-image: radial-gradient(circle, rgba(0,255,255,0.25) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: moveParticles 25s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes moveParticles{
+    from {transform: translateY(0);}
+    to {transform: translateY(-120px);}
+}
+
+/* ---------------- CONTAINER ---------------- */
 .container{
     max-width:900px;
     margin:auto;
     padding:20px;
+    position:relative;
+    z-index:1;
 }
 
 .title{
@@ -24,48 +58,72 @@ body{
     font-size:28px;
     margin-bottom:20px;
     color:#00f0ff;
+    text-shadow:0 0 10px #00f0ff;
 }
 
+/* ---------------- CATEGORY ---------------- */
 .category{
-    background:#111827;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border:1px solid rgba(0,255,255,0.2);
     padding:18px;
-    border-radius:12px;
+    border-radius:15px;
     margin-bottom:15px;
     cursor:pointer;
+    transition:0.3s;
+}
+
+.category:hover{
+    box-shadow:0 0 20px #00f0ff;
 }
 
 .category h2{
     margin:0;
     display:flex;
     justify-content:space-between;
+    align-items:center;
 }
 
+.arrow{
+    transition:0.3s;
+}
+.rotate{
+    transform:rotate(180deg);
+}
+
+/* ---------------- SERVICES ---------------- */
 .services{
     max-height:0;
     overflow:hidden;
-    transition:0.4s ease;
+    transition: max-height 0.5s ease;
     margin-top:15px;
 }
 
 .service-box{
-    background:#1f2937;
+    background: rgba(0,255,255,0.05);
     padding:10px;
-    border-radius:8px;
+    border-radius:10px;
     margin-bottom:10px;
+    border:1px solid rgba(0,255,255,0.2);
 }
 
 .service-row{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
     gap:10px;
+    flex-wrap:wrap;
+}
+
+.service-name{
+    flex:1;
+    font-size:14px;
 }
 
 .price-box{
-    background:#0f172a;
+    background:#111827;
     padding:6px 12px;
-    border-radius:6px;
+    border-radius:8px;
     color:#00f0ff;
     font-weight:bold;
 }
@@ -80,142 +138,174 @@ body{
     color:white;
 }
 
+/* ---------------- ORDER BUTTON ---------------- */
 .order-btn{
     margin-top:10px;
-    padding:8px 20px;
+    padding:10px 25px;
     border:none;
-    border-radius:20px;
+    border-radius:25px;
     cursor:pointer;
-    background:#00f0ff;
-    color:black;
     font-weight:bold;
+    color:white;
+    background:linear-gradient(90deg,#00f0ff,#9333ea);
+    animation:pulse 1.5s infinite;
+    transition:0.3s;
+}
+
+.order-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #00f0ff;
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 0 5px #00f0ff;}
+    50%{box-shadow:0 0 20px #00f0ff;}
+    100%{box-shadow:0 0 5px #00f0ff;}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 <div class="title">SOCIAL MEDIA BOOSTING SERVICES</div>
 
-<!-- FACEBOOK -->
-<div class="category" onclick="toggle(this)">
-<h2>📘 Facebook Services ▼</h2>
+<!-- ---------------- FACEBOOK ---------------- -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>📘 Facebook Services <span class="arrow">▼</span></h2>
 <div class="services">
-
 <div class="service-box"><div class="service-row">
-<div>Page followers</div><div class="price-box">₱34</div>
+<div class="service-name">Page followers</div>
+<div class="price-box">₱34</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Profile followers</div><div class="price-box">₱38</div>
+<div class="service-name">Profile followers</div>
+<div class="price-box">₱38</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Share post</div><div class="price-box">₱30</div>
+<div class="service-name">Share post</div>
+<div class="price-box">₱30</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Reaction post</div><div class="price-box">₱27</div>
+<div class="service-name">Reaction post</div>
+<div class="price-box">₱27</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Reels views</div><div class="price-box">₱30</div>
+<div class="service-name">Reels views</div>
+<div class="price-box">₱30</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
-<button class="order-btn" onclick="order(event)">Order Now</button>
-
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
 </div>
 </div>
 
-<!-- INSTAGRAM -->
-<div class="category" onclick="toggle(this)">
-<h2>📸 Instagram Services ▼</h2>
+<!-- ---------------- INSTAGRAM ---------------- -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>📸 Instagram Services <span class="arrow">▼</span></h2>
 <div class="services">
-
 <div class="service-box"><div class="service-row">
-<div>Followers</div><div class="price-box">₱70</div>
+<div class="service-name">Followers</div>
+<div class="price-box">₱70</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Likes</div><div class="price-box">₱38</div>
+<div class="service-name">Likes</div>
+<div class="price-box">₱38</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Views</div><div class="price-box">₱30</div>
+<div class="service-name">Views</div>
+<div class="price-box">₱30</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
-<button class="order-btn" onclick="order(event)">Order Now</button>
-
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
 </div>
 </div>
 
-<!-- TIKTOK -->
-<div class="category" onclick="toggle(this)">
-<h2>🎵 TikTok Services ▼</h2>
+<!-- ---------------- TIKTOK ---------------- -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>🎵 TikTok Services <span class="arrow">▼</span></h2>
 <div class="services">
-
 <div class="service-box"><div class="service-row">
-<div>Followers</div><div class="price-box">₱180</div>
+<div class="service-name">Followers</div>
+<div class="price-box">₱180</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Likes</div><div class="price-box">₱30</div>
+<div class="service-name">Likes</div>
+<div class="price-box">₱30</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Views</div><div class="price-box">₱30</div>
+<div class="service-name">Views</div>
+<div class="price-box">₱30</div>
 <div class="qty-box"><input type="number" value="1000"></div>
 </div></div>
 
-<button class="order-btn" onclick="order(event)">Order Now</button>
-
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
 </div>
 </div>
 
-<!-- OWN TOOL -->
-<div class="category" onclick="toggle(this)">
-<h2>🛠 Own Tool Services ▼</h2>
+<!-- ---------------- OWN TOOL ---------------- -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>🛠 Own Tool Services <span class="arrow">▼</span></h2>
 <div class="services">
-
 <div class="service-box"><div class="service-row">
-<div>Tool Access</div><div class="price-box">₱999</div>
+<div class="service-name">Tool Access</div>
+<div class="price-box">₱999</div>
 <div class="qty-box"><input type="number" value="1"></div>
 </div></div>
 
 <div class="service-box"><div class="service-row">
-<div>Custom Tool</div><div class="price-box">₱1499</div>
+<div class="service-name">Custom Tool</div>
+<div class="price-box">₱1499</div>
 <div class="qty-box"><input type="number" value="1"></div>
 </div></div>
 
-<button class="order-btn" onclick="order(event)">Order Now</button>
-
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
 </div>
 </div>
 
 </div>
 
 <script>
-function toggle(el){
+function toggleCategory(el){
     const box = el.querySelector(".services");
-    box.style.maxHeight = box.style.maxHeight ? null : box.scrollHeight + "px";
+    const arrow = el.querySelector(".arrow");
+    // Close others
+    document.querySelectorAll(".services").forEach(s=>{
+        if(s!==box) s.style.maxHeight = null;
+    });
+    document.querySelectorAll(".arrow").forEach(a=>{
+        if(a!==arrow) a.classList.remove("rotate");
+    });
+    // Toggle current
+    if(box.style.maxHeight){
+        box.style.maxHeight = null;
+        arrow.classList.remove("rotate");
+    } else {
+        box.style.maxHeight = box.scrollHeight + "px";
+        arrow.classList.add("rotate");
+    }
 }
 
-function order(e){
+function orderNow(e){
     e.stopPropagation();
     window.location.href="https://www.facebook.com/profile.php?id=61580925834433";
 }
 </script>
-
 </body>
 </html>

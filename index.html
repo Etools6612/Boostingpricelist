@@ -9,14 +9,33 @@
 body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
-    background: linear-gradient(135deg,#0f0f1b,#1a1a2e,#0f3460);
+    background: radial-gradient(circle at top left,#0f0f1b,#0a0a15,#000);
     color:white;
+    overflow-x:hidden;
+}
+
+/* Neon animated background */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background: linear-gradient(45deg,#9333ea,#6366f1,#00f0ff,#ff00ff);
+    animation: neonMove 10s linear infinite;
+    opacity:0.08;
+}
+
+@keyframes neonMove{
+    0%{transform:translate(-25%,-25%) rotate(0deg);}
+    100%{transform:translate(-25%,-25%) rotate(360deg);}
 }
 
 .container{
     max-width:900px;
     margin:auto;
     padding:20px;
+    position:relative;
+    z-index:1;
 }
 
 .title{
@@ -24,24 +43,19 @@ body{
     font-size:30px;
     margin-bottom:25px;
     font-weight:bold;
-    background: linear-gradient(90deg,#a855f7,#6366f1);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:#00f0ff;
+    text-shadow:0 0 10px #00f0ff;
 }
 
 /* CATEGORY */
 .category{
-    background: rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.05);
     padding:18px;
     border-radius:15px;
-    margin-bottom:15px;
+    margin-bottom:20px;
     cursor:pointer;
-    box-shadow:0 0 15px rgba(168,85,247,0.4);
-    transition:0.3s;
-}
-
-.category:hover{
-    box-shadow:0 0 25px rgba(168,85,247,0.8);
+    border:1px solid rgba(0,255,255,0.2);
+    box-shadow:0 0 15px rgba(0,255,255,0.3);
 }
 
 .category h2{
@@ -49,31 +63,29 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:18px;
 }
 
 .arrow{
     transition:0.3s;
 }
-
 .rotate{
     transform:rotate(180deg);
 }
 
-/* DROPDOWN */
 .services{
     max-height:0;
     overflow:hidden;
     transition:max-height 0.5s ease;
-    margin-top:10px;
+    margin-top:15px;
 }
 
-/* SERVICE STYLE */
+/* SERVICE BOX */
 .service-box{
-    background: rgba(255,255,255,0.05);
+    background: rgba(0,255,255,0.05);
     padding:10px;
     border-radius:10px;
     margin-bottom:10px;
+    border:1px solid rgba(0,255,255,0.2);
 }
 
 .service-row{
@@ -90,18 +102,46 @@ body{
 }
 
 .price-box{
-    background:#1f1f3a;
-    padding:6px 10px;
+    background:#111827;
+    padding:6px 12px;
     border-radius:8px;
-    font-size:13px;
+    color:#00f0ff;
+    font-weight:bold;
 }
 
 .qty-box input{
-    width:70px;
-    padding:5px;
+    width:80px;
+    padding:6px;
     border:none;
     border-radius:6px;
     text-align:center;
+    background:#0f172a;
+    color:white;
+}
+
+/* ORDER BUTTON */
+.order-btn{
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(90deg,#00f0ff,#9333ea);
+    animation:pulse 1.5s infinite;
+    transition:0.3s;
+}
+
+.order-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #00f0ff;
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 0 5px #00f0ff;}
+    50%{box-shadow:0 0 20px #00f0ff;}
+    100%{box-shadow:0 0 5px #00f0ff;}
 }
 </style>
 </head>
@@ -115,10 +155,25 @@ body{
 <div class="category" onclick="toggleCategory(this)">
 <h2>📘 Facebook Services <span class="arrow">▼</span></h2>
 <div class="services">
-<div class="service-box"><div class="service-row"><div class="service-name">Page Followers</div><div class="price-box">₱34 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Profile Followers</div><div class="price-box">₱38 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Reaction</div><div class="price-box">₱30 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Share</div><div class="price-box">₱26 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
+
+<div class="service-box">
+<div class="service-row">
+<div class="service-name">Page Followers</div>
+<div class="price-box">₱34</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div>
+</div>
+
+<div class="service-box">
+<div class="service-row">
+<div class="service-name">Profile Followers</div>
+<div class="price-box">₱38</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+
 </div>
 </div>
 
@@ -126,9 +181,25 @@ body{
 <div class="category" onclick="toggleCategory(this)">
 <h2>📸 Instagram Services <span class="arrow">▼</span></h2>
 <div class="services">
-<div class="service-box"><div class="service-row"><div class="service-name">Followers</div><div class="price-box">₱70 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Likes</div><div class="price-box">₱38 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Views</div><div class="price-box">₱29 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
+
+<div class="service-box">
+<div class="service-row">
+<div class="service-name">Followers</div>
+<div class="price-box">₱70</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div>
+</div>
+
+<div class="service-box">
+<div class="service-row">
+<div class="service-name">Likes</div>
+<div class="price-box">₱38</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+
 </div>
 </div>
 
@@ -136,30 +207,25 @@ body{
 <div class="category" onclick="toggleCategory(this)">
 <h2>🎵 TikTok Services <span class="arrow">▼</span></h2>
 <div class="services">
-<div class="service-box"><div class="service-row"><div class="service-name">Followers</div><div class="price-box">₱180 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Likes</div><div class="price-box">₱30 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Views</div><div class="price-box">₱17 / 1000</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
+
+<div class="service-box">
+<div class="service-row">
+<div class="service-name">Followers</div>
+<div class="price-box">₱180</div>
+<div class="qty-box"><input type="number" value="1000"></div>
 </div>
 </div>
 
-<!-- OWN TOOL SERVICES -->
-<div class="category" onclick="toggleCategory(this)">
-<h2>⚙️ Own Services <span class="arrow">▼</span></h2>
-<div class="services">
-<div class="service-box"><div class="service-row"><div class="service-name">SMS BOMB 1000 PROCESS </div><div class="price-box">₱200 Base</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">CALL BOMB 1000 PROCESS </div><div class="price-box">₱200</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">Mass REPORT FB 1000 PROCESS</div><div class="price-box">₱300</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
+<div class="service-box">
+<div class="service-row">
+<div class="service-name">Likes</div>
+<div class="price-box">₱30</div>
+<div class="qty-box"><input type="number" value="1000"></div>
 </div>
 </div>
 
-<!-- TOOLS -->
-<div class="category" onclick="toggleCategory(this)">
-<h2>🛠 Tools Available <span class="arrow">▼</span></h2>
-<div class="services">
-<div class="service-box"><div class="service-row"><div class="service-name">MASS REPORT TOOL</div><div class="price-box">₱300</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">SMS BOMB TOOL</div><div class="price-box">₱300</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">CALL BOMB TOOL Tool</div><div class="price-box">₱300</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
-<div class="service-box"><div class="service-row"><div class="service-name">AUTOMATIC FB MAKER Tool</div><div class="price-box">₱400</div><div class="qty-box"><input type="number" placeholder="Qty"></div></div></div>
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+
 </div>
 </div>
 
@@ -167,31 +233,36 @@ body{
 
 <script>
 function toggleCategory(selected){
-    const allServices = document.querySelectorAll(".services");
-    const allArrows = document.querySelectorAll(".arrow");
+    const allServices=document.querySelectorAll(".services");
+    const allArrows=document.querySelectorAll(".arrow");
 
     allServices.forEach(service=>{
-        if(service !== selected.querySelector(".services")){
-            service.style.maxHeight = null;
+        if(service!==selected.querySelector(".services")){
+            service.style.maxHeight=null;
         }
     });
 
     allArrows.forEach(arrow=>{
-        if(arrow !== selected.querySelector(".arrow")){
+        if(arrow!==selected.querySelector(".arrow")){
             arrow.classList.remove("rotate");
         }
     });
 
-    const box = selected.querySelector(".services");
-    const arrow = selected.querySelector(".arrow");
+    const box=selected.querySelector(".services");
+    const arrow=selected.querySelector(".arrow");
 
     if(box.style.maxHeight){
-        box.style.maxHeight = null;
+        box.style.maxHeight=null;
         arrow.classList.remove("rotate");
-    } else {
-        box.style.maxHeight = box.scrollHeight + "px";
+    } else{
+        box.style.maxHeight=box.scrollHeight+"px";
         arrow.classList.add("rotate");
     }
+}
+
+function orderNow(event){
+    event.stopPropagation();
+    window.location.href="https://www.facebook.com/profile.php?id=61580925834433";
 }
 </script>
 

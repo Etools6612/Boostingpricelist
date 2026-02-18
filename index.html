@@ -3,154 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Temp Mail Pro</title>
+<title>Social Media Services</title>
+
 <style>
-*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{margin:0;min-height:100vh;background:linear-gradient(135deg,#4c1d95,#6d28d9,#7c3aed);color:white;padding:20px;}
-h1{text-align:center;font-weight:900;}
-.mailbox{max-width:600px;margin:auto;background:rgba(255,255,255,.15);backdrop-filter:blur(14px);padding:20px;border-radius:22px;}
-select,input,button{width:100%;padding:12px;border:none;border-radius:14px;margin-top:10px;font-size:15px;}
-select{background:white;color:black;}
-.email-box{display:flex;gap:8px;margin-top:12px;}
-.email-box input{flex:1;background:#fff;color:#000;font-weight:bold;}
-.copy-btn{background:#22c55e;color:white;cursor:pointer;font-weight:bold;}
-.generate{background:#0ea5e9;color:white;cursor:pointer;font-weight:bold;margin-top:12px;}
-.tabs{display:flex;gap:10px;margin-top:20px;overflow-x:auto;}
-.tab{padding:10px 14px;background:rgba(255,255,255,.2);border-radius:14px;cursor:pointer;flex-shrink:0;}
-.tab.active{background:#22c55e;}
-.inbox-container{margin-top:20px;}
-.inbox{background:#0b1220;border-radius:16px;padding:14px;min-height:140px;position:relative;overflow:hidden;}
-.mail-item{background:#1e293b;padding:10px;border-radius:12px;margin-bottom:8px;font-size:14px;opacity:0;transform:translateY(-10px);transition:all .4s;}
-.admin-panel{margin-top:30px;background:rgba(255,255,255,.1);padding:14px;border-radius:14px;}
-.admin-panel h3{margin-top:0;}
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#0f0f1b,#1a1a2e,#0f3460);
+    color:white;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:30px;
+    font-weight:bold;
+    background: linear-gradient(90deg,#a855f7,#6366f1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.card{
+    background: rgba(255,255,255,0.05);
+    border-radius:15px;
+    padding:20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(168,85,247,0.3);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(168,85,247,0.6);
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#a855f7;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+}
+
+li{
+    padding:6px 0;
+    font-size:14px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.button-container{
+    text-align:center;
+    margin-top:40px;
+}
+
+button{
+    padding:15px 40px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background: linear-gradient(90deg,#9333ea,#6366f1);
+    color:white;
+    transition:0.3s;
+}
+
+button:hover{
+    box-shadow:0 0 20px #9333ea;
+    transform:scale(1.05);
+}
 </style>
 </head>
+
 <body>
 
-<h1>📩 TEMP MAIL PRO</h1>
-<div class="hint">Generate disposable email • Copy • Multi Inbox • Live Incoming Mail</div>
+<div class="container">
+<div class="title">SOCIAL MEDIA BOOSTING SERVICES</div>
 
-<div class="mailbox">
-  <label>Select Email Provider:</label>
-  <select id="provider">
-    <option value="cybertemp.xyz">cybertemp.xyz</option>
-    <option value="harakirimail.com">harakirimail.com</option>
-    <option value="5smail.email">5smail.email</option>
-    <option value="outlook.com">Outlook</option>
-  </select>
+<div class="grid">
 
-  <button class="generate" onclick="generateEmail()">⚡ Generate Email</button>
-
-  <div class="email-box">
-    <input id="emailField" readonly placeholder="Generated email appears here">
-    <button class="copy-btn" onclick="copyEmail()">COPY</button>
-  </div>
-
-  <!-- Tabs for multiple inboxes -->
-  <div class="tabs" id="tabs"></div>
-
-  <!-- Inbox Container -->
-  <div class="inbox-container">
-    <div class="inbox" id="inbox"><div class="empty">Inbox is empty...</div></div>
-  </div>
-
-  <!-- Admin Panel -->
-  <div class="admin-panel" id="adminPanel">
-    <h3>Admin Panel</h3>
-    <div id="adminLogs">No logs yet...</div>
-  </div>
+<div class="card">
+<h2>FACEBOOK SERVICES</h2>
+<ul>
+<li>Page Followers ₱34 / 1,000</li>
+<li>Profile Followers ₱38 / 1,000</li>
+<li>Reaction ₱30 / 1,000</li>
+<li>Share ₱26 / 1,000</li>
+<li>Reel Views ₱30 / 1,000</li>
+<li>Video Views ₱35 / 1,000</li>
+<li>CM 10k Followers + 150k Views ₱1,500</li>
+<li>Bulk 10k Page Followers ₱200</li>
+<li>Bulk 10k Profile Followers ₱280</li>
+</ul>
 </div>
 
-<script>
-let inboxes = {}; // store inbox by email
-let activeEmail = null;
+<div class="card">
+<h2>INSTAGRAM SERVICES</h2>
+<ul>
+<li>Instagram Followers ₱70 / 1,000</li>
+<li>Instagram Likes ₱38 / 1,000</li>
+<li>Instagram Views ₱29 / 1,000</li>
+</ul>
+</div>
 
-function randomString(length){
-  const chars="abcdefghijklmnopqrstuvwxyz0123456789";
-  let result="";
-  for(let i=0;i<length;i++) result+=chars.charAt(Math.floor(Math.random()*chars.length));
-  return result;
-}
+<div class="card">
+<h2>TIKTOK SERVICES</h2>
+<ul>
+<li>TikTok Followers ₱180 / 1,000</li>
+<li>TikTok Likes ₱30 / 1,000</li>
+<li>TikTok Views ₱17 / 1,000</li>
+</ul>
+</div>
 
-// Generate Email & Tab
-function generateEmail(){
-  const domain=document.getElementById("provider").value;
-  const email=randomString(10)+"@"+domain;
-  document.getElementById("emailField").value=email;
+<div class="card">
+<h2>OWN SERVICES</h2>
+<ul>
+<li>Custom Digital Services Available</li>
+<li>Fast Processing</li>
+<li>Secure & Confidential</li>
+</ul>
+</div>
 
-  // create inbox for new email
-  if(!inboxes[email]) inboxes[email] = [];
-  activeEmail = email;
-  renderTabs();
-  fetchInbox(email);
-  logAdmin(`Email generated: ${email}`);
-}
+<div class="card">
+<h2>TOOLS AVAILABLE</h2>
+<ul>
+<li>Marketing Tools</li>
+<li>Automation Tools</li>
+<li>Content Support Tools</li>
+</ul>
+</div>
 
-// Copy email
-function copyEmail(){
-  const email=document.getElementById("emailField");
-  if(!email.value) return alert("Generate email first.");
-  email.select();
-  document.execCommand("copy");
-  alert("Email copied!");
-}
+</div>
 
-// Render Tabs
-function renderTabs(){
-  const tabsEl=document.getElementById("tabs");
-  tabsEl.innerHTML="";
-  Object.keys(inboxes).forEach(email=>{
-    const tab=document.createElement("div");
-    tab.className="tab"+(email===activeEmail?" active":"");
-    tab.innerText=email;
-    tab.onclick=()=>{activeEmail=email;renderTabs();renderInbox();}
-    tabsEl.appendChild(tab);
-  });
-}
+<div class="button-container">
+<button onclick="window.location.href='https://www.facebook.com/profile.php?id=61580925834433'">
+Order Now
+</button>
+</div>
 
-// Render Inbox
-function renderInbox(){
-  const inboxEl=document.getElementById("inbox");
-  inboxEl.innerHTML="";
-  const items = inboxes[activeEmail];
-  if(items.length===0){
-    inboxEl.innerHTML='<div class="empty">Inbox is empty...</div>';
-  } else {
-    items.forEach(msg=>{
-      const div=document.createElement("div");
-      div.className="mail-item";
-      div.innerHTML=msg;
-      inboxEl.appendChild(div);
-      // live animation
-      setTimeout(()=>{div.style.opacity=1; div.style.transform="translateY(0)";},50);
-    });
-  }
-}
+</div>
 
-// Log to Admin Panel
-function logAdmin(msg){
-  const logs = document.getElementById("adminLogs");
-  const entry = document.createElement("div");
-  entry.innerText=`[${new Date().toLocaleTimeString()}] ${msg}`;
-  logs.prepend(entry);
-}
-
-// Simulate API Inbox Fetch
-function fetchInbox(email){
-  // Example using real API: Replace this fetch call with your tempmail API
-  // fetch(`https://api.temp-mail.org/request/mail/id/${email}/format/json`)
-  //   .then(res=>res.json())
-  //   .then(data=>{ /* populate inbox */ });
-
-  // For demo: simulate new message every 3-5s
-  setInterval(()=>{
-    if(!inboxes[email]) return;
-    const newMail=`📩 New message from ${email}: Code ${Math.floor(Math.random()*900000+100000)}`;
-    inboxes[email].push(newMail);
-    if(activeEmail===email) renderInbox();
-    logAdmin(`New mail received for ${email}`);
-  }, 4000 + Math.random()*2000);
-}
-</script>
 </body>
 </html>

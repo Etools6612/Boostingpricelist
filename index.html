@@ -11,100 +11,61 @@ body{
     font-family:'Segoe UI',sans-serif;
     background: radial-gradient(circle at top left,#0f0f1b,#0a0a15,#000);
     color:white;
-    overflow-x:hidden;
-}
-
-/* Neon animated background */
-body::before{
-    content:"";
-    position:fixed;
-    width:200%;
-    height:200%;
-    background: linear-gradient(45deg,#9333ea,#6366f1,#00f0ff,#ff00ff);
-    animation: neonMove 10s linear infinite;
-    opacity:0.08;
-}
-
-@keyframes neonMove{
-    0%{transform:translate(-25%,-25%) rotate(0deg);}
-    100%{transform:translate(-25%,-25%) rotate(360deg);}
 }
 
 .container{
     max-width:900px;
     margin:auto;
     padding:20px;
-    position:relative;
-    z-index:1;
 }
 
 .title{
     text-align:center;
-    font-size:30px;
-    margin-bottom:25px;
-    font-weight:bold;
+    font-size:28px;
+    margin-bottom:20px;
     color:#00f0ff;
-    text-shadow:0 0 10px #00f0ff;
 }
 
-/* CATEGORY */
 .category{
-    background: rgba(255,255,255,0.05);
+    background:#111827;
     padding:18px;
-    border-radius:15px;
-    margin-bottom:20px;
+    border-radius:12px;
+    margin-bottom:15px;
     cursor:pointer;
-    border:1px solid rgba(0,255,255,0.2);
-    box-shadow:0 0 15px rgba(0,255,255,0.3);
 }
 
 .category h2{
     margin:0;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-}
-
-.arrow{
-    transition:0.3s;
-}
-.rotate{
-    transform:rotate(180deg);
 }
 
 .services{
     max-height:0;
     overflow:hidden;
-    transition:max-height 0.5s ease;
+    transition:0.4s ease;
     margin-top:15px;
 }
 
-/* SERVICE BOX */
 .service-box{
-    background: rgba(0,255,255,0.05);
+    background:#1f2937;
     padding:10px;
-    border-radius:10px;
+    border-radius:8px;
     margin-bottom:10px;
-    border:1px solid rgba(0,255,255,0.2);
 }
 
 .service-row{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:10px;
     flex-wrap:wrap;
-}
-
-.service-name{
-    flex:1;
-    font-size:14px;
+    gap:10px;
 }
 
 .price-box{
-    background:#111827;
+    background:#0f172a;
     padding:6px 12px;
-    border-radius:8px;
+    border-radius:6px;
     color:#00f0ff;
     font-weight:bold;
 }
@@ -119,29 +80,15 @@ body::before{
     color:white;
 }
 
-/* ORDER BUTTON */
 .order-btn{
-    margin-top:15px;
-    padding:10px 25px;
+    margin-top:10px;
+    padding:8px 20px;
     border:none;
-    border-radius:25px;
+    border-radius:20px;
     cursor:pointer;
+    background:#00f0ff;
+    color:black;
     font-weight:bold;
-    color:white;
-    background:linear-gradient(90deg,#00f0ff,#9333ea);
-    animation:pulse 1.5s infinite;
-    transition:0.3s;
-}
-
-.order-btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 20px #00f0ff;
-}
-
-@keyframes pulse{
-    0%{box-shadow:0 0 5px #00f0ff;}
-    50%{box-shadow:0 0 20px #00f0ff;}
-    100%{box-shadow:0 0 5px #00f0ff;}
 }
 </style>
 </head>
@@ -152,79 +99,106 @@ body::before{
 <div class="title">SOCIAL MEDIA BOOSTING SERVICES</div>
 
 <!-- FACEBOOK -->
-<div class="category" onclick="toggleCategory(this)">
-<h2>📘 Facebook Services <span class="arrow">▼</span></h2>
+<div class="category" onclick="toggle(this)">
+<h2>📘 Facebook Services ▼</h2>
 <div class="services">
 
-<div class="service-box">
-<div class="service-row">
-<div class="service-name">Page Followers</div>
-<div class="price-box">₱34</div>
+<div class="service-box"><div class="service-row">
+<div>Page followers</div><div class="price-box">₱34</div>
 <div class="qty-box"><input type="number" value="1000"></div>
-</div>
-</div>
+</div></div>
 
-<div class="service-box">
-<div class="service-row">
-<div class="service-name">Profile Followers</div>
-<div class="price-box">₱38</div>
+<div class="service-box"><div class="service-row">
+<div>Profile followers</div><div class="price-box">₱38</div>
 <div class="qty-box"><input type="number" value="1000"></div>
-</div>
-</div>
+</div></div>
 
-<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+<div class="service-box"><div class="service-row">
+<div>Share post</div><div class="price-box">₱30</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<div class="service-box"><div class="service-row">
+<div>Reaction post</div><div class="price-box">₱27</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<div class="service-box"><div class="service-row">
+<div>Reels views</div><div class="price-box">₱30</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<button class="order-btn" onclick="order(event)">Order Now</button>
 
 </div>
 </div>
 
 <!-- INSTAGRAM -->
-<div class="category" onclick="toggleCategory(this)">
-<h2>📸 Instagram Services <span class="arrow">▼</span></h2>
+<div class="category" onclick="toggle(this)">
+<h2>📸 Instagram Services ▼</h2>
 <div class="services">
 
-<div class="service-box">
-<div class="service-row">
-<div class="service-name">Followers</div>
-<div class="price-box">₱70</div>
+<div class="service-box"><div class="service-row">
+<div>Followers</div><div class="price-box">₱70</div>
 <div class="qty-box"><input type="number" value="1000"></div>
-</div>
-</div>
+</div></div>
 
-<div class="service-box">
-<div class="service-row">
-<div class="service-name">Likes</div>
-<div class="price-box">₱38</div>
+<div class="service-box"><div class="service-row">
+<div>Likes</div><div class="price-box">₱38</div>
 <div class="qty-box"><input type="number" value="1000"></div>
-</div>
-</div>
+</div></div>
 
-<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+<div class="service-box"><div class="service-row">
+<div>Views</div><div class="price-box">₱30</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<button class="order-btn" onclick="order(event)">Order Now</button>
 
 </div>
 </div>
 
 <!-- TIKTOK -->
-<div class="category" onclick="toggleCategory(this)">
-<h2>🎵 TikTok Services <span class="arrow">▼</span></h2>
+<div class="category" onclick="toggle(this)">
+<h2>🎵 TikTok Services ▼</h2>
 <div class="services">
 
-<div class="service-box">
-<div class="service-row">
-<div class="service-name">Followers</div>
-<div class="price-box">₱180</div>
+<div class="service-box"><div class="service-row">
+<div>Followers</div><div class="price-box">₱180</div>
 <div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<div class="service-box"><div class="service-row">
+<div>Likes</div><div class="price-box">₱30</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<div class="service-box"><div class="service-row">
+<div>Views</div><div class="price-box">₱30</div>
+<div class="qty-box"><input type="number" value="1000"></div>
+</div></div>
+
+<button class="order-btn" onclick="order(event)">Order Now</button>
+
 </div>
 </div>
 
-<div class="service-box">
-<div class="service-row">
-<div class="service-name">Likes</div>
-<div class="price-box">₱30</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div>
-</div>
+<!-- OWN TOOL -->
+<div class="category" onclick="toggle(this)">
+<h2>🛠 Own Tool Services ▼</h2>
+<div class="services">
 
-<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+<div class="service-box"><div class="service-row">
+<div>Tool Access</div><div class="price-box">₱999</div>
+<div class="qty-box"><input type="number" value="1"></div>
+</div></div>
+
+<div class="service-box"><div class="service-row">
+<div>Custom Tool</div><div class="price-box">₱1499</div>
+<div class="qty-box"><input type="number" value="1"></div>
+</div></div>
+
+<button class="order-btn" onclick="order(event)">Order Now</button>
 
 </div>
 </div>
@@ -232,36 +206,13 @@ body::before{
 </div>
 
 <script>
-function toggleCategory(selected){
-    const allServices=document.querySelectorAll(".services");
-    const allArrows=document.querySelectorAll(".arrow");
-
-    allServices.forEach(service=>{
-        if(service!==selected.querySelector(".services")){
-            service.style.maxHeight=null;
-        }
-    });
-
-    allArrows.forEach(arrow=>{
-        if(arrow!==selected.querySelector(".arrow")){
-            arrow.classList.remove("rotate");
-        }
-    });
-
-    const box=selected.querySelector(".services");
-    const arrow=selected.querySelector(".arrow");
-
-    if(box.style.maxHeight){
-        box.style.maxHeight=null;
-        arrow.classList.remove("rotate");
-    } else{
-        box.style.maxHeight=box.scrollHeight+"px";
-        arrow.classList.add("rotate");
-    }
+function toggle(el){
+    const box = el.querySelector(".services");
+    box.style.maxHeight = box.style.maxHeight ? null : box.scrollHeight + "px";
 }
 
-function orderNow(event){
-    event.stopPropagation();
+function order(e){
+    e.stopPropagation();
     window.location.href="https://www.facebook.com/profile.php?id=61580925834433";
 }
 </script>

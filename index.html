@@ -6,7 +6,6 @@
 <title>Social Media Boosting Services</title>
 
 <style>
-/* ---------------- BODY ---------------- */
 body{
     margin:0;
     font-family: 'Segoe UI', sans-serif;
@@ -15,7 +14,7 @@ body{
     overflow-x:hidden;
 }
 
-/* Neon glow background */
+/* Glow background */
 body::before{
     content:"";
     position:fixed;
@@ -26,14 +25,12 @@ body::before{
     z-index:-1;
 }
 
-/* ---------------- CONTAINER ---------------- */
 .container{
     max-width:900px;
     margin:auto;
     padding:20px;
 }
 
-/* ---------------- TITLE ---------------- */
 .title{
     text-align:center;
     font-size:30px;
@@ -45,7 +42,6 @@ body::before{
     margin-bottom:25px;
 }
 
-/* ---------------- CATEGORY CARD ---------------- */
 .category{
     background: rgba(255,255,255,0.03);
     border:1px solid rgba(255,120,0,0.4);
@@ -55,7 +51,6 @@ body::before{
     margin-bottom:18px;
     cursor:pointer;
     transition:0.4s;
-    box-shadow:0 0 20px rgba(255,80,120,0.1);
 }
 
 .category:hover{
@@ -80,7 +75,6 @@ body::before{
     transform:rotate(180deg);
 }
 
-/* ---------------- SERVICES ---------------- */
 .services{
     max-height:0;
     overflow:hidden;
@@ -133,7 +127,6 @@ body::before{
     border:1px solid #ff4d6d;
 }
 
-/* ---------------- ORDER BUTTON ---------------- */
 .order-btn{
     margin-top:12px;
     padding:10px 25px;
@@ -155,7 +148,6 @@ body::before{
 </head>
 
 <body>
-
 <div class="container">
 <div class="title">SOCIAL MEDIA BOOSTING SERVICES</div>
 
@@ -164,60 +156,60 @@ body::before{
 <h2>Facebook Services <span class="arrow">▼</span></h2>
 <div class="services">
 
-<div class="service-box"><div class="service-row">
-<div class="service-name">Page followers</div>
-<div class="price-box">₱34</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Page followers</div><div class="price-box">₱34</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Profile followers</div><div class="price-box">₱38</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Share post</div><div class="price-box">₱30</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Reaction post</div><div class="price-box">₱27</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Reels views</div><div class="price-box">₱30</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Video views</div><div class="price-box">₱38</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Content Monitization package 150k views + 10k followers</div><div class="price-box">₱1,300</div><div class="qty-box"><input type="number" value="0"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Page follow 10k Package</div><div class="price-box">₱190</div><div class="qty-box"><input type="number" value="10000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Profile Follow 10k Package</div><div class="price-box">₱200</div><div class="qty-box"><input type="number" value="10000"></div></div></div>
 
-<div class="service-box"><div class="service-row">
-<div class="service-name">Profile followers</div>
-<div class="price-box">₱38</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div></div>
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+</div>
+</div>
 
-<div class="service-box"><div class="service-row">
-<div class="service-name">Share post</div>
-<div class="price-box">₱30</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div></div>
+<!-- INSTAGRAM -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>Instagram Services <span class="arrow">▼</span></h2>
+<div class="services">
+<div class="service-box"><div class="service-row"><div class="service-name">Followers</div><div class="price-box">₱70</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Likes</div><div class="price-box">₱38</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Views</div><div class="price-box">₱30</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+</div>
+</div>
 
-<div class="service-box"><div class="service-row">
-<div class="service-name">Reaction post</div>
-<div class="price-box">₱27</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div></div>
+<!-- TIKTOK -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>TikTok Services <span class="arrow">▼</span></h2>
+<div class="services">
+<div class="service-box"><div class="service-row"><div class="service-name">Followers</div><div class="price-box">₱180</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Likes</div><div class="price-box">₱30</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">Views</div><div class="price-box">₱30</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+</div>
+</div>
 
-<div class="service-box"><div class="service-row">
-<div class="service-name">Reels views</div>
-<div class="price-box">₱30</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div></div>
+<!-- OWN TOOL SERVICES -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>Own Tool Services <span class="arrow">▼</span></h2>
+<div class="services">
+<div class="service-box"><div class="service-row"><div class="service-name">SMS BOMB</div><div class="price-box">₱200</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">CALL BOMB</div><div class="price-box">₱250</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">MASS REPORT</div><div class="price-box">₱290</div><div class="qty-box"><input type="number" value="1000"></div></div></div>
+<button class="order-btn" onclick="orderNow(event)">Order Now</button>
+</div>
+</div>
 
-<div class="service-box"><div class="service-row">
-<div class="service-name">Video views</div>
-<div class="price-box">₱38</div>
-<div class="qty-box"><input type="number" value="1000"></div>
-</div></div>
-
-<div class="service-box"><div class="service-row">
-<div class="service-name">Content Monitization package 150k views + 10k followers</div>
-<div class="price-box">₱1,300</div>
-<div class="qty-box"><input type="number" value="0"></div>
-</div></div>
-
-<div class="service-box"><div class="service-row">
-<div class="service-name">Page follow 10k Package</div>
-<div class="price-box">₱190</div>
-<div class="qty-box"><input type="number" value="10000"></div>
-</div></div>
-
-<div class="service-box"><div class="service-row">
-<div class="service-name">Profile Follow 10k Package</div>
-<div class="price-box">₱200</div>
-<div class="qty-box"><input type="number" value="10000"></div>
-</div></div>
-
+<!-- OWN TOOL FOR SALE -->
+<div class="category" onclick="toggleCategory(this)">
+<h2>Own Tool FOR SALE <span class="arrow">▼</span></h2>
+<div class="services">
+<div class="service-box"><div class="service-row"><div class="service-name">SMS BOMB + CALL BOMB</div><div class="price-box">₱580</div><div class="qty-box"><input type="number" value="0"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">MASS REPORT</div><div class="price-box">₱350</div><div class="qty-box"><input type="number" value="0"></div></div></div>
+<div class="service-box"><div class="service-row"><div class="service-name">FB MAKER TOOL</div><div class="price-box">₱500</div><div class="qty-box"><input type="number" value="0"></div></div></div>
 <button class="order-btn" onclick="orderNow(event)">Order Now</button>
 </div>
 </div>

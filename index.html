@@ -56,15 +56,14 @@ body{
     justify-content:space-between;
 }
 
-/* SERVICES */
+/* SERVICES (AUTO OPEN) */
 .services{
-    max-height:0;
-    overflow:hidden;
-    transition:0.4s ease;
+    display:block;
     margin-top:10px;
     font-size:13px;
 }
 
+/* SERVICE GROUP */
 .service-group{
     margin-bottom:10px;
 }
@@ -199,10 +198,10 @@ body{
 
 <div class="service-group">
 <h3>PROMO BOOSTING BUNDLE</h3>
-<div class="service-item"><span>10,000 Page Followers [ UNAVAILABLE ) </span><span>₱190</span></div>
-<div class="service-item"><span>10,000 Profile Followers [ UNAVAILABLE ]</span><span>₱200</span></div
-<div class="service-item"><span>10,000 Profile Followers (AVAILABLE )</span><span>₱350</span></div>
-<div class="service-item"><span>10,000 PAGE Followers ( AVAILABLE )</span><span>₱340</span></div>
+<div class="service-item"><span>10,000 Page Followers [UNAVAILABLE]</span><span>₱190</span></div>
+<div class="service-item"><span>10,000 Profile Followers [UNAVAILABLE]</span><span>₱200</span></div>
+<div class="service-item"><span>10,000 Profile Followers (AVAILABLE)</span><span>₱350</span></div>
+<div class="service-item"><span>10,000 Page Followers (AVAILABLE)</span><span>₱340</span></div>
 </div>
 
 <div class="service-group">
@@ -258,17 +257,12 @@ body{
 </div>
 </div>
 
-<!-- CONTACT INFO -->
+<!-- CONTACT -->
 <div class="contact-box">
 <h3>CONTACT INFORMATION</h3>
 
-<a href="https://t.me/Lynx_0313" target="_blank">
-📬 Telegram : @Lynx_0313
-</a>
-
-<a href="https://www.facebook.com/profile.php?id=61584819458376" target="_blank">
-📥 Facebook Profile
-</a>
+<a href="https://t.me/Lynx_0313" target="_blank">📬 Telegram : @Lynx_0313</a>
+<a href="https://www.facebook.com/profile.php?id=61584819458376" target="_blank">📥 Facebook Profile</a>
 
 <button class="order-btn" onclick="toggleOrder()">ORDER NOW</button>
 
@@ -276,26 +270,22 @@ body{
 <a href="https://t.me/Lynx_0313" target="_blank">Order via Telegram</a>
 <a href="https://www.facebook.com/messages/t/61584819458376" target="_blank">Order via Facebook</a>
 </div>
-
 </div>
 
-<!-- PROMO NOTE BOX -->
+<!-- PROMO -->
 <div class="promo-box">
 <h3>IMPORTANT NOTE</h3>
 <p>
-Are you a small content creator or business owner struggling to increase your engagement, followers, views, and more?
+Are you a small content creator or business owner struggling to increase engagement?
 <br><br>
 I offer fast and legit boosting services that are 100% safe.
 <br><br>
-🕒 24/7 Open — You can order by messaging me on Telegram or Facebook.
-<br><br>
-Click the link below to direct message 📬
+🕒 24/7 Open — Message me anytime.
 </p>
 
 <a href="https://t.me/Lynx_0313" target="_blank" class="promo-btn">
 ORDER NOW !!!
 </a>
-
 </div>
 
 </div>
@@ -303,16 +293,14 @@ ORDER NOW !!!
 <script>
 function toggleBox(el){
     const services = el.querySelector(".services");
-    if(services.style.maxHeight){
-        services.style.maxHeight = null;
-    } else {
-        services.style.maxHeight = services.scrollHeight + "px";
-    }
+    services.style.display =
+        services.style.display === "none" ? "block" : "none";
 }
 
 function toggleOrder(){
     const box = document.getElementById("orderOptions");
-    box.style.display = box.style.display === "block" ? "none" : "block";
+    box.style.display =
+        box.style.display === "block" ? "none" : "block";
 }
 </script>
 

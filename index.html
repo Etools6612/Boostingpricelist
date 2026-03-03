@@ -13,9 +13,14 @@ body{
 background:#071426;
 color:white;
 overflow-x:hidden;
+transition:0.4s;
 }
 
-/* PARTICLES */
+body.light{
+background:#f4f4f4;
+color:black;
+}
+
 canvas{
 position:fixed;
 top:0;
@@ -23,7 +28,6 @@ left:0;
 z-index:-1;
 }
 
-/* HEADER */
 .header{
 text-align:center;
 font-size:30px;
@@ -42,9 +46,48 @@ background:rgba(12,31,56,0.6);
 backdrop-filter:blur(10px);
 border:2px solid #ff6a00;
 box-shadow:0 0 20px rgba(255,106,0,0.4);
+transition:0.4s;
+position:relative;
 }
 
-.category h2{color:#ffae00;}
+.category.active{
+box-shadow:0 0 40px #ff6a00;
+}
+
+.category h2{
+color:#ffae00;
+}
+
+/* 🔥 PROMO STYLE */
+.promo{
+border:2px solid #ff0077;
+box-shadow:0 0 25px #ff0077, 0 0 50px #ff00aa;
+animation:promoGlow 2s infinite alternate;
+}
+
+@keyframes promoGlow{
+from{box-shadow:0 0 15px #ff0077;}
+to{box-shadow:0 0 40px #ff00aa;}
+}
+
+.badge{
+position:absolute;
+top:-12px;
+right:-12px;
+background:linear-gradient(45deg,#ff0000,#ff9900);
+padding:6px 12px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold;
+box-shadow:0 0 15px red;
+animation:badgePulse 1.5s infinite;
+}
+
+@keyframes badgePulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
 
 .view-btn{
 margin-top:15px;
@@ -77,18 +120,6 @@ animation:fadeUp 0.5s forwards;
 to{opacity:1;transform:translateY(0);}
 }
 
-.delete-btn{
-background:red;
-border:none;
-padding:4px 8px;
-border-radius:6px;
-cursor:pointer;
-color:white;
-font-size:11px;
-margin-left:8px;
-}
-
-/* CONTACT */
 .contact{
 margin:20px;
 padding:25px;
@@ -106,7 +137,6 @@ background:linear-gradient(90deg,#ff6a00,#ffae00);
 cursor:pointer;
 }
 
-/* NOTE */
 .note{
 margin:20px;
 padding:20px;
@@ -116,60 +146,13 @@ box-shadow:0 0 20px #ff00aa;
 text-align:center;
 }
 
-/* ADMIN LOGIN */
-.admin-login{
-text-align:center;
-margin:20px;
-padding:10px;
-border:2px solid #ff6a00;
-border-radius:20px;
-cursor:pointer;
-}
-
-/* ADMIN PANEL */
-.admin-panel{
-display:none;
+.toggle-mode{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.95);
-overflow:auto;
-padding:30px;
-}
-
-.admin-box{
-background:#0c1f38;
-padding:20px;
-border-radius:15px;
+top:20px;
+right:20px;
+padding:8px 15px;
+border-radius:20px;
 border:2px solid #ff6a00;
-margin-bottom:20px;
-}
-
-input,select{
-width:100%;
-padding:8px;
-margin:5px 0;
-border-radius:8px;
-border:none;
-}
-
-.save-btn{
-background:#ff6a00;
-padding:8px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-}
-
-.close-btn{
-background:red;
-color:white;
-padding:6px 15px;
-border:none;
-border-radius:10px;
-margin-top:10px;
 cursor:pointer;
 }
 </style>
@@ -178,7 +161,10 @@ cursor:pointer;
 
 <canvas id="particles"></canvas>
 
+<div class="toggle-mode" onclick="toggleMode()">🌙 Mode</div>
+
 <div class="header">LYNX BOOSTING SERVICES</div>
+
 <div id="categories"></div>
 
 <div class="contact">
@@ -194,64 +180,55 @@ cursor:pointer;
 <p>Fast and legit boosting services that are 100% safe. Open 24/7.</p>
 </div>
 
-<div class="admin-login" onclick="openAdmin()">ADMIN LOGIN</div>
-
-<div class="admin-panel" id="adminPanel">
-<div class="admin-box">
-<h3>ADD CATEGORY</h3>
-<input type="text" id="newCategory" placeholder="New Category Name">
-<button class="save-btn" onclick="addCategory()">ADD CATEGORY</button>
-</div>
-
-<div class="admin-box">
-<h3>ADD SERVICE</h3>
-<select id="categorySelect"></select>
-<input type="text" id="serviceName" placeholder="Service Name">
-<input type="text" id="servicePrice" placeholder="Price">
-<button class="save-btn" onclick="addService()">ADD SERVICE</button>
-</div>
-
-<button class="close-btn" onclick="closeAdmin()">CLOSE</button>
-</div>
-
 <script>
+let data = {
 
-let isAdmin=false;
-let adminPass="1234";
+facebook_promo:[
+{name:"10,000 Page Followers",price:"₱ 180"},
+{name:"10,000 Profile Followers",price:"₱ 190"},
+{name:"10,000 Reel Views",price:"₱ 250"},
+{name:"10,000 Video Views",price:"₱ 280"},
+{name:"Content Monetization Promo",price:"₱ 1,399"}
+],
 
-let data=JSON.parse(localStorage.getItem("servicesData"))||{
 facebook:[
-{name:"1,000 Page Followers",price:"₱ 34"},
-{name:"5,000 Page Followers",price:"₱ 160"},
-{name:"10,000 Page Followers",price:"₱ 190"}
+{name:"1,000 Page Followers",price:"₱ 40"},
+{name:"1,000 Profile Followers",price:"₱ 45"},
+{name:"1,000 Reel Views",price:"₱ 30"},
+{name:"1,000 Video Views",price:"₱ 38"},
+{name:"1,000 Post Reaction",price:"₱ 30"},
+{name:"1,000 Share Post",price:"₱ 40"},
+{name:"100 Star Sending",price:"₱ 70"},
+{name:"1,000 Star Sending",price:"₱ 700"},
+{name:"Content Monetization (CM) 10K Followers + 150K Views",price:"₱ 2,000"}
 ],
+
 instagram:[
-{name:"1,000 Followers",price:"₱ 45"}
+{name:"1,000 Followers",price:"₱ 45"},
+{name:"1,000 Instagram Likes",price:"₱ 30"}
 ],
+
 tiktok:[
 {name:"1,000 Followers",price:"₱ 50"}
 ]
-};
 
-function save(){localStorage.setItem("servicesData",JSON.stringify(data));}
+};
 
 function render(){
 let container=document.getElementById("categories");
 container.innerHTML="";
-document.getElementById("categorySelect").innerHTML="";
 
 for(let cat in data){
 
-document.getElementById("categorySelect").innerHTML+=
-`<option value="${cat}">${cat}</option>`;
+let isPromo = cat === "facebook_promo";
 
 let div=document.createElement("div");
 div.className="category";
-
-let deleteCatBtn=isAdmin?`<button class="delete-btn" onclick="deleteCategory('${cat}')">Delete Category</button>`:"";
+if(isPromo) div.classList.add("promo");
 
 div.innerHTML=`
-<h2>${cat.toUpperCase()} CATEGORY ${deleteCatBtn}</h2>
+<h2>${cat.replace("_"," ").toUpperCase()} CATEGORY</h2>
+${isPromo ? '<div class="badge">LIMITED PROMO</div>' : ''}
 <button class="view-btn" onclick="toggleServices(this)">CLICK HERE TO VIEW SERVICES</button>
 <div class="services"></div>
 `;
@@ -261,67 +238,27 @@ container.appendChild(div);
 let servicesDiv=div.querySelector(".services");
 
 data[cat].forEach((item,i)=>{
-let delBtn=isAdmin?`<button class="delete-btn" onclick="deleteService('${cat}',${i})">Delete</button>`:"";
-
-servicesDiv.innerHTML+=`
-<div class="service-item">
-<span>${item.name} - ${item.price}</span>
-${delBtn}
-</div>`;
+let service=document.createElement("div");
+service.className="service-item";
+service.style.animationDelay=i*0.1+"s";
+service.innerHTML=`<span>${item.name} - ${item.price}</span>`;
+servicesDiv.appendChild(service);
 });
 }
-
-save();
 }
 
 function toggleServices(btn){
 document.querySelectorAll(".services").forEach(s=>s.style.display="none");
-btn.parentElement.querySelector(".services").style.display="block";
+document.querySelectorAll(".category").forEach(c=>c.classList.remove("active"));
+
+let parent=btn.parentElement;
+let services=parent.querySelector(".services");
+services.style.display="block";
+parent.classList.add("active");
 }
 
-function deleteService(cat,i){
-if(confirm("Delete this service?")){
-data[cat].splice(i,1);
-render();
-}
-}
-
-function deleteCategory(cat){
-if(confirm("Delete entire category?")){
-delete data[cat];
-render();
-}
-}
-
-function addCategory(){
-let name=document.getElementById("newCategory").value;
-if(name){
-data[name.toLowerCase()]=[];
-render();
-}
-}
-
-function addService(){
-let cat=document.getElementById("categorySelect").value;
-let name=document.getElementById("serviceName").value;
-let price=document.getElementById("servicePrice").value;
-if(name&&price){
-data[cat].push({name,price});
-render();
-}
-}
-
-function openAdmin(){
-let pass=prompt("Enter Admin Password:");
-if(pass===adminPass){
-isAdmin=true;
-document.getElementById("adminPanel").style.display="block";
-render();
-}else{alert("Wrong Password");}
-}
-
-function closeAdmin(){
-document.getElementById("adminPanel").style.display="none";
+function toggleMode(){
+document.body.classList.toggle("light");
 }
 
 /* PARTICLES */

@@ -3,341 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LYNX BOOSTING SERVICES</title>
+<title>Lynx Boosting Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+
 body{
-    margin:0;
-    font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(135deg,#050510,#0f0f1f);
-    color:white;
+background:#071426;
+color:white;
+overflow-x:hidden;
 }
 
+/* PARTICLES */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* HEADER */
 .header{
-    text-align:center;
-    padding:30px 15px;
+text-align:center;
+font-size:30px;
+font-weight:800;
+padding:20px;
+color:#ff8800;
+text-shadow:0 0 20px #ff6a00;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:800;
-    background:linear-gradient(90deg,#ff0077,#ff9900,#00c3ff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.container{
-    max-width:700px;
-    margin:auto;
-    padding:15px;
-}
-
+/* CATEGORY */
 .category{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,120,0,0.4);
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:15px;
+margin:20px;
+padding:25px;
+border-radius:25px;
+background:rgba(12,31,56,0.6);
+backdrop-filter:blur(10px);
+border:2px solid #ff6a00;
+box-shadow:0 0 20px rgba(255,106,0,0.4);
 }
 
-.category h2{
-    margin:0;
-    font-size:16px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+.category h2{color:#ffae00;}
 
 .view-btn{
-    font-size:11px;
-    padding:6px 10px;
-    background:#111;
-    border-radius:6px;
-    cursor:pointer;
-    color:#ff9900;
-    border:1px solid #ff9900;
+margin-top:15px;
+padding:6px 18px;
+border-radius:20px;
+border:2px solid #ff6a00;
+background:black;
+color:#ffae00;
+cursor:pointer;
+font-size:12px;
 }
 
-.view-btn:hover{
-    background:#ff9900;
-    color:#000;
-}
-
-.services{
-    display:none;
-    margin-top:10px;
-    font-size:13px;
-}
-
-.service-group{
-    margin-bottom:12px;
-}
-
-.service-group h3{
-    margin:8px 0;
-    font-size:13px;
-    color:#ff9900;
-}
+.services{display:none;margin-top:15px;}
 
 .service-item{
-    display:flex;
-    justify-content:space-between;
-    padding:4px 0;
+background:#081a30;
+margin:8px 0;
+padding:10px;
+border-radius:10px;
+border:1px solid #ff6a00;
+display:flex;
+justify-content:space-between;
+align-items:center;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 0.5s forwards;
 }
 
-/* PROMO BOX */
-.promo-special{
-    background:rgba(0,255,150,0.08);
-    border:1px solid rgba(0,255,150,0.6);
-    padding:20px;
-    border-radius:14px;
-    margin-top:25px;
-    text-align:center;
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);}
 }
 
-.promo-special h3{
-    margin:0;
-    color:#00ffae;
-}
-
-.promo-special .price{
-    font-size:18px;
-    margin:10px 0;
-    font-weight:bold;
-}
-
-.order-special{
-    padding:10px 15px;
-    background:linear-gradient(90deg,#ff0077,#ff9900);
-    border:none;
-    border-radius:8px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.generated-box{
-    margin-top:15px;
-    display:none;
-    background:#111;
-    padding:15px;
-    border-radius:10px;
-    font-size:13px;
-}
-
-.copy-btn{
-    margin-top:10px;
-    padding:6px 10px;
-    background:#00c3ff;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
+.delete-btn{
+background:red;
+border:none;
+padding:4px 8px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+font-size:11px;
+margin-left:8px;
 }
 
 /* CONTACT */
-.contact-box{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(0,150,255,0.4);
-    padding:20px;
-    border-radius:12px;
-    margin-top:20px;
-    text-align:center;
-}
-
-.contact-box a{
-    display:block;
-    margin:8px 0;
-    padding:10px;
-    background:#111;
-    border-radius:8px;
-    text-decoration:none;
-    color:#00c3ff;
+.contact{
+margin:20px;
+padding:25px;
+border-radius:20px;
+border:2px solid #ff6a00;
+box-shadow:0 0 20px #ff6a00;
 }
 
 .order-btn{
-    margin-top:10px;
-    padding:10px;
-    background:linear-gradient(90deg,#ff0077,#ff9900);
-    border:none;
-    border-radius:10px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+margin-top:10px;
+padding:10px 25px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#ff6a00,#ffae00);
+cursor:pointer;
 }
 
-.order-options{
-    display:none;
-    margin-top:10px;
+/* NOTE */
+.note{
+margin:20px;
+padding:20px;
+border-radius:20px;
+border:2px solid #ff00aa;
+box-shadow:0 0 20px #ff00aa;
+text-align:center;
 }
 
-.order-options a{
-    display:block;
-    margin:5px 0;
-    padding:8px;
-    background:#222;
-    border-radius:8px;
-    text-decoration:none;
-    color:#fff;
+/* ADMIN LOGIN */
+.admin-login{
+text-align:center;
+margin:20px;
+padding:10px;
+border:2px solid #ff6a00;
+border-radius:20px;
+cursor:pointer;
 }
 
-.promo-box{
-    background:rgba(255,0,120,0.08);
-    border:1px solid rgba(255,0,120,0.6);
-    padding:18px;
-    border-radius:14px;
-    margin-top:20px;
-    text-align:center;
+/* ADMIN PANEL */
+.admin-panel{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+overflow:auto;
+padding:30px;
+}
+
+.admin-box{
+background:#0c1f38;
+padding:20px;
+border-radius:15px;
+border:2px solid #ff6a00;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:8px;
+margin:5px 0;
+border-radius:8px;
+border:none;
+}
+
+.save-btn{
+background:#ff6a00;
+padding:8px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.close-btn{
+background:red;
+color:white;
+padding:6px 15px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+cursor:pointer;
 }
 </style>
 </head>
-
 <body>
 
-<div class="header">
-<div class="logo">LYNX BOOSTING SERVICES</div>
-</div>
+<canvas id="particles"></canvas>
 
-<div class="container">
+<div class="header">LYNX BOOSTING SERVICES</div>
+<div id="categories"></div>
 
-<!-- FACEBOOK -->
-<div class="category">
-<h2>
-FACEBOOK CATEGORY SERVICES
-<span class="view-btn" onclick="toggleBox(this)">CLICK HERE TO VIEW SERVICES</span>
-</h2>
-
-<div class="services">
-
-<div class="service-group">
-<h3>FACEBOOK REGULAR BOOSTING</h3>
-<div class="service-item"><span>1,000 Page Follow</span><span>₱40</span></div>
-<div class="service-item"><span>1,000 Profile Follow</span><span>₱45</span></div>
-<div class="service-item"><span>1,000 Reaction</span><span>₱30</span></div>
-<div class="service-item"><span>1,000 Share</span><span>₱45</span></div>
-<div class="service-item"><span>1,000 Reel Views</span><span>₱38</span></div>
-<div class="service-item"><span>1,000 Video Views</span><span>₱40</span></div>
-</div>
-
-<div class="service-group">
-<h3>PROMO BOOSTING BUNDLE</h3>
-<div class="service-item"><span>10,000 Page Followers [UNAVAILABLE]</span><span>₱190</span></div>
-<div class="service-item"><span>10,000 Profile Followers [UNAVAILABLE]</span><span>₱200</span></div>
-<div class="service-item"><span>10,000 Profile Followers (AVAILABLE)</span><span>₱350</span></div>
-<div class="service-item"><span>10,000 Page Followers (AVAILABLE)</span><span>₱340</span></div>
-</div>
-
-<div class="service-group">
-<h3>MONETIZATION</h3>
-<div class="service-item"><span>Content Monetization Bundle (10k Followers + 150k Views)</span><span>₱1,500</span></div>
-</div>
-
-<div class="service-group">
-<h3>STAR SENDING GIFT</h3>
-<div class="service-item"><span>100 Star</span><span>₱80</span></div>
-<div class="service-item"><span>1,000 Star</span><span>₱790</span></div>
-</div>
-
-<div class="service-group">
-<h3>MASSIVE REPORT FACEBOOK</h3>
-<div class="service-item"><span>1,000 Mass Report</span><span>₱300</span></div>
-</div>
-
-</div>
-</div>
-
-<!-- INSTAGRAM -->
-<div class="category">
-<h2>
-INSTAGRAM CATEGORY SERVICES
-<span class="view-btn" onclick="toggleBox(this)">CLICK HERE TO VIEW SERVICES</span>
-</h2>
-<div class="services">
-<div class="service-item"><span>1,000 Instagram Followers</span><span>₱80</span></div>
-<div class="service-item"><span>1,000 Instagram Likes</span><span>₱40</span></div>
-<div class="service-item"><span>1,000 Instagram Views</span><span>₱37</span></div>
-<div class="service-item"><span>10,000 Instagram Followers</span><span>₱590</span></div>
-</div>
-</div>
-
-<!-- TIKTOK -->
-<div class="category">
-<h2>
-TIKTOK CATEGORY SERVICES
-<span class="view-btn" onclick="toggleBox(this)">CLICK HERE TO VIEW SERVICES</span>
-</h2>
-<div class="services">
-<div class="service-item"><span>1,000 TikTok Followers</span><span>₱130</span></div>
-<div class="service-item"><span>1,000 Views</span><span>₱20</span></div>
-</div>
-</div>
-
-<!-- PROMO ABOVE CONTACT -->
-<div class="promo-special">
-<h3>PAGE FOLLOWERS PROMO</h3>
-<div class="price">₱ 190 PER 10,000</div>
-<button class="order-special" onclick="generateCode()">ORDER NOW</button>
-
-<div class="generated-box" id="generatedCodeBox">
-<div id="generatedCode"></div>
-<button class="copy-btn" onclick="copyCode()">COPY THE CODE</button>
-<p style="margin-top:10px;font-size:12px;color:#aaa;">
-Send this code to the owner to reserve slot.
-</p>
-</div>
-</div>
-
-<!-- CONTACT -->
-<div class="contact-box">
+<div class="contact">
 <h3>CONTACT INFORMATION</h3>
-<p style="font-size:13px;color:#ccc;">
-Click the desired platform to message the owner.  
-It will automatically direct you!
-</p>
-
-<a href="https://t.me/Lynx_0313" target="_blank">📬 Telegram : @Lynx_0313</a>
-<a href="https://www.facebook.com/profile.php?id=61586227738419" target="_blank">📥 Facebook Profile</a>
-
-<button class="order-btn" onclick="toggleOrder()">ORDER NOW</button>
-
-<div class="order-options" id="orderOptions">
-<a href="https://t.me/Lynx_0313" target="_blank">Order via Telegram</a>
-<a href="https://www.facebook.com/messages/t/61586227738419" target="_blank">Order via Facebook</a>
-</div>
+<p>Telegram: @Lynx_0313</p>
+<a href="https://www.facebook.com/profile.php?id=615558183964" target="_blank">
+<button class="order-btn">ORDER NOW</button>
+</a>
 </div>
 
-<!-- NOTE -->
-<div class="promo-box">
+<div class="note">
 <h3>IMPORTANT NOTE</h3>
-<p>Fast and legit boosting services that are 100% safe. Open 24/7 — Message anytime.</p>
+<p>Fast and legit boosting services that are 100% safe. Open 24/7.</p>
 </div>
 
+<div class="admin-login" onclick="openAdmin()">ADMIN LOGIN</div>
+
+<div class="admin-panel" id="adminPanel">
+<div class="admin-box">
+<h3>ADD CATEGORY</h3>
+<input type="text" id="newCategory" placeholder="New Category Name">
+<button class="save-btn" onclick="addCategory()">ADD CATEGORY</button>
+</div>
+
+<div class="admin-box">
+<h3>ADD SERVICE</h3>
+<select id="categorySelect"></select>
+<input type="text" id="serviceName" placeholder="Service Name">
+<input type="text" id="servicePrice" placeholder="Price">
+<button class="save-btn" onclick="addService()">ADD SERVICE</button>
+</div>
+
+<button class="close-btn" onclick="closeAdmin()">CLOSE</button>
 </div>
 
 <script>
-function toggleBox(btn){
-    const services = btn.closest(".category").querySelector(".services");
-    services.style.display =
-        services.style.display === "block" ? "none" : "block";
+
+let isAdmin=false;
+let adminPass="1234";
+
+let data=JSON.parse(localStorage.getItem("servicesData"))||{
+facebook:[
+{name:"1,000 Page Followers",price:"₱ 34"},
+{name:"5,000 Page Followers",price:"₱ 160"},
+{name:"10,000 Page Followers",price:"₱ 190"}
+],
+instagram:[
+{name:"1,000 Followers",price:"₱ 45"}
+],
+tiktok:[
+{name:"1,000 Followers",price:"₱ 50"}
+]
+};
+
+function save(){localStorage.setItem("servicesData",JSON.stringify(data));}
+
+function render(){
+let container=document.getElementById("categories");
+container.innerHTML="";
+document.getElementById("categorySelect").innerHTML="";
+
+for(let cat in data){
+
+document.getElementById("categorySelect").innerHTML+=
+`<option value="${cat}">${cat}</option>`;
+
+let div=document.createElement("div");
+div.className="category";
+
+let deleteCatBtn=isAdmin?`<button class="delete-btn" onclick="deleteCategory('${cat}')">Delete Category</button>`:"";
+
+div.innerHTML=`
+<h2>${cat.toUpperCase()} CATEGORY ${deleteCatBtn}</h2>
+<button class="view-btn" onclick="toggleServices(this)">CLICK HERE TO VIEW SERVICES</button>
+<div class="services"></div>
+`;
+
+container.appendChild(div);
+
+let servicesDiv=div.querySelector(".services");
+
+data[cat].forEach((item,i)=>{
+let delBtn=isAdmin?`<button class="delete-btn" onclick="deleteService('${cat}',${i})">Delete</button>`:"";
+
+servicesDiv.innerHTML+=`
+<div class="service-item">
+<span>${item.name} - ${item.price}</span>
+${delBtn}
+</div>`;
+});
 }
 
-function toggleOrder(){
-    const box = document.getElementById("orderOptions");
-    box.style.display =
-        box.style.display === "block" ? "none" : "block";
+save();
 }
 
-function generateCode(){
-    const randomCode = "LYNX-" + Math.random().toString(36).substring(2,8).toUpperCase();
-    document.getElementById("generatedCode").innerHTML =
-        "<b>COPY THE CODE AND SEND IT INTO THE OWNER TO RESERVE SLOT</b><br><br>" + randomCode;
-    document.getElementById("generatedCodeBox").style.display = "block";
+function toggleServices(btn){
+document.querySelectorAll(".services").forEach(s=>s.style.display="none");
+btn.parentElement.querySelector(".services").style.display="block";
 }
 
-function copyCode(){
-    const text = document.getElementById("generatedCode").innerText;
-    navigator.clipboard.writeText(text);
-    alert("Code Copied!");
+function deleteService(cat,i){
+if(confirm("Delete this service?")){
+data[cat].splice(i,1);
+render();
 }
+}
+
+function deleteCategory(cat){
+if(confirm("Delete entire category?")){
+delete data[cat];
+render();
+}
+}
+
+function addCategory(){
+let name=document.getElementById("newCategory").value;
+if(name){
+data[name.toLowerCase()]=[];
+render();
+}
+}
+
+function addService(){
+let cat=document.getElementById("categorySelect").value;
+let name=document.getElementById("serviceName").value;
+let price=document.getElementById("servicePrice").value;
+if(name&&price){
+data[cat].push({name,price});
+render();
+}
+}
+
+function openAdmin(){
+let pass=prompt("Enter Admin Password:");
+if(pass===adminPass){
+isAdmin=true;
+document.getElementById("adminPanel").style.display="block";
+render();
+}else{alert("Wrong Password");}
+}
+
+function closeAdmin(){
+document.getElementById("adminPanel").style.display="none";
+}
+
+/* PARTICLES */
+let canvas=document.getElementById("particles");
+let ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:2});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="#ff6a00";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=0.3;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+render();
 </script>
 
 </body>

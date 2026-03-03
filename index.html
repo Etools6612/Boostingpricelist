@@ -13,7 +13,6 @@ body{
     color:white;
 }
 
-/* HEADER */
 .header{
     text-align:center;
     padding:30px 15px;
@@ -27,26 +26,18 @@ body{
     -webkit-text-fill-color:transparent;
 }
 
-/* CONTAINER */
 .container{
     max-width:700px;
     margin:auto;
     padding:15px;
 }
 
-/* CATEGORY BOX */
 .category{
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(255,120,0,0.4);
     padding:15px;
     border-radius:12px;
     margin-bottom:15px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.category:hover{
-    box-shadow:0 0 15px rgba(255,120,0,0.6);
 }
 
 .category h2{
@@ -54,18 +45,32 @@ body{
     font-size:16px;
     display:flex;
     justify-content:space-between;
+    align-items:center;
 }
 
-/* SERVICES (AUTO OPEN) */
+.view-btn{
+    font-size:11px;
+    padding:6px 10px;
+    background:#111;
+    border-radius:6px;
+    cursor:pointer;
+    color:#ff9900;
+    border:1px solid #ff9900;
+}
+
+.view-btn:hover{
+    background:#ff9900;
+    color:#000;
+}
+
 .services{
-    display:block;
+    display:none;
     margin-top:10px;
     font-size:13px;
 }
 
-/* SERVICE GROUP */
 .service-group{
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .service-group h3{
@@ -80,11 +85,60 @@ body{
     padding:4px 0;
 }
 
-/* CONTACT BOX */
+/* PROMO BOX */
+.promo-special{
+    background:rgba(0,255,150,0.08);
+    border:1px solid rgba(0,255,150,0.6);
+    padding:20px;
+    border-radius:14px;
+    margin-top:25px;
+    text-align:center;
+}
+
+.promo-special h3{
+    margin:0;
+    color:#00ffae;
+}
+
+.promo-special .price{
+    font-size:18px;
+    margin:10px 0;
+    font-weight:bold;
+}
+
+.order-special{
+    padding:10px 15px;
+    background:linear-gradient(90deg,#ff0077,#ff9900);
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.generated-box{
+    margin-top:15px;
+    display:none;
+    background:#111;
+    padding:15px;
+    border-radius:10px;
+    font-size:13px;
+}
+
+.copy-btn{
+    margin-top:10px;
+    padding:6px 10px;
+    background:#00c3ff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* CONTACT */
 .contact-box{
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(0,150,255,0.4);
-    padding:15px;
+    padding:20px;
     border-radius:12px;
     margin-top:20px;
     text-align:center;
@@ -93,22 +147,14 @@ body{
 .contact-box a{
     display:block;
     margin:8px 0;
-    padding:8px;
+    padding:10px;
     background:#111;
     border-radius:8px;
     text-decoration:none;
     color:#00c3ff;
-    font-size:14px;
 }
 
-.contact-box a:hover{
-    background:#00c3ff;
-    color:#000;
-}
-
-/* ORDER BUTTON */
 .order-btn{
-    display:block;
     margin-top:10px;
     padding:10px;
     background:linear-gradient(90deg,#ff0077,#ff9900);
@@ -134,7 +180,6 @@ body{
     color:#fff;
 }
 
-/* PROMO NOTE BOX */
 .promo-box{
     background:rgba(255,0,120,0.08);
     border:1px solid rgba(255,0,120,0.6);
@@ -142,33 +187,6 @@ body{
     border-radius:14px;
     margin-top:20px;
     text-align:center;
-    font-size:14px;
-}
-
-.promo-box h3{
-    margin-top:0;
-    color:#ff4d6d;
-}
-
-.promo-box p{
-    color:#ddd;
-    line-height:1.6;
-}
-
-.promo-btn{
-    display:inline-block;
-    margin-top:12px;
-    padding:10px 20px;
-    background:linear-gradient(90deg,#ff0077,#ff9900);
-    border-radius:10px;
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.promo-btn:hover{
-    transform:scale(1.05);
 }
 </style>
 </head>
@@ -176,14 +194,18 @@ body{
 <body>
 
 <div class="header">
-    <div class="logo">LYNX BOOSTING SERVICES</div>
+<div class="logo">LYNX BOOSTING SERVICES</div>
 </div>
 
 <div class="container">
 
 <!-- FACEBOOK -->
-<div class="category" onclick="toggleBox(this)">
-<h2>FACEBOOK CATEGORY SERVICES ▼</h2>
+<div class="category">
+<h2>
+FACEBOOK CATEGORY SERVICES
+<span class="view-btn" onclick="toggleBox(this)">CLICK HERE TO VIEW SERVICES</span>
+</h2>
+
 <div class="services">
 
 <div class="service-group">
@@ -224,42 +246,53 @@ body{
 </div>
 
 <!-- INSTAGRAM -->
-<div class="category" onclick="toggleBox(this)">
-<h2>INSTAGRAM CATEGORY SERVICES ▼</h2>
+<div class="category">
+<h2>
+INSTAGRAM CATEGORY SERVICES
+<span class="view-btn" onclick="toggleBox(this)">CLICK HERE TO VIEW SERVICES</span>
+</h2>
 <div class="services">
-
-<div class="service-group">
-<h3>Instagram Regular Boosting</h3>
 <div class="service-item"><span>1,000 Instagram Followers</span><span>₱80</span></div>
 <div class="service-item"><span>1,000 Instagram Likes</span><span>₱40</span></div>
 <div class="service-item"><span>1,000 Instagram Views</span><span>₱37</span></div>
-</div>
-
-<div class="service-group">
-<h3>Instagram Promo Boosting (Bulk)</h3>
 <div class="service-item"><span>10,000 Instagram Followers</span><span>₱590</span></div>
-</div>
-
 </div>
 </div>
 
 <!-- TIKTOK -->
-<div class="category" onclick="toggleBox(this)">
-<h2>TIKTOK CATEGORY SERVICES ▼</h2>
+<div class="category">
+<h2>
+TIKTOK CATEGORY SERVICES
+<span class="view-btn" onclick="toggleBox(this)">CLICK HERE TO VIEW SERVICES</span>
+</h2>
 <div class="services">
-
-<div class="service-group">
-<h3>TikTok Regular Boosting</h3>
 <div class="service-item"><span>1,000 TikTok Followers</span><span>₱130</span></div>
 <div class="service-item"><span>1,000 Views</span><span>₱20</span></div>
 </div>
+</div>
 
+<!-- PROMO ABOVE CONTACT -->
+<div class="promo-special">
+<h3>PAGE FOLLOWERS PROMO</h3>
+<div class="price">₱ 190 PER 10,000</div>
+<button class="order-special" onclick="generateCode()">ORDER NOW</button>
+
+<div class="generated-box" id="generatedCodeBox">
+<div id="generatedCode"></div>
+<button class="copy-btn" onclick="copyCode()">COPY THE CODE</button>
+<p style="margin-top:10px;font-size:12px;color:#aaa;">
+Send this code to the owner to reserve slot.
+</p>
 </div>
 </div>
 
 <!-- CONTACT -->
 <div class="contact-box">
 <h3>CONTACT INFORMATION</h3>
+<p style="font-size:13px;color:#ccc;">
+Click the desired platform to message the owner.  
+It will automatically direct you!
+</p>
 
 <a href="https://t.me/Lynx_0313" target="_blank">📬 Telegram : @Lynx_0313</a>
 <a href="https://www.facebook.com/profile.php?id=61586227738419" target="_blank">📥 Facebook Profile</a>
@@ -268,39 +301,42 @@ body{
 
 <div class="order-options" id="orderOptions">
 <a href="https://t.me/Lynx_0313" target="_blank">Order via Telegram</a>
-<a href="https://www.facebook.com/profile.php?id=61586227738419" target="_blank">Order via Facebook</a>
+<a href="https://www.facebook.com/messages/t/61586227738419" target="_blank">Order via Facebook</a>
 </div>
 </div>
 
-<!-- PROMO -->
+<!-- NOTE -->
 <div class="promo-box">
 <h3>IMPORTANT NOTE</h3>
-<p>
-Are you a small content creator or business owner struggling to increase engagement?
-<br><br>
-I offer fast and legit boosting services that are 100% safe.
-<br><br>
-🕒 24/7 Open — Message me anytime.
-</p>
-
-<a href="https://t.me/Lynx_0313" target="_blank" class="promo-btn">
-ORDER NOW !!!
-</a>
+<p>Fast and legit boosting services that are 100% safe. Open 24/7 — Message anytime.</p>
 </div>
 
 </div>
 
 <script>
-function toggleBox(el){
-    const services = el.querySelector(".services");
+function toggleBox(btn){
+    const services = btn.closest(".category").querySelector(".services");
     services.style.display =
-        services.style.display === "none" ? "block" : "none";
+        services.style.display === "block" ? "none" : "block";
 }
 
 function toggleOrder(){
     const box = document.getElementById("orderOptions");
     box.style.display =
         box.style.display === "block" ? "none" : "block";
+}
+
+function generateCode(){
+    const randomCode = "LYNX-" + Math.random().toString(36).substring(2,8).toUpperCase();
+    document.getElementById("generatedCode").innerHTML =
+        "<b>COPY THE CODE AND SEND IT INTO THE OWNER TO RESERVE SLOT</b><br><br>" + randomCode;
+    document.getElementById("generatedCodeBox").style.display = "block";
+}
+
+function copyCode(){
+    const text = document.getElementById("generatedCode").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Code Copied!");
 }
 </script>
 
